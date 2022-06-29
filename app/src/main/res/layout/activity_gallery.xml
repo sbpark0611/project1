@@ -7,13 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".gallery">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="gallery"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:layout_gravity="center_vertical|center_horizontal"
+        app:srcCompat="@drawable/ic_baseline_image_24" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -26,3 +27,5 @@
         app:menu="@menu/menu_navigation" />
 
 </RelativeLayout>
+
+
