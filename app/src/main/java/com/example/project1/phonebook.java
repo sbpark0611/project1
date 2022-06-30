@@ -1,17 +1,20 @@
 package com.example.project1;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -23,13 +26,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 public class phonebook extends AppCompatActivity {
 
     RecyclerView recyclerView;
     Adapter adapter;
+    JSONObject jsonObject;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,18 +43,30 @@ public class phonebook extends AppCompatActivity {
         AssetManager assetManager= getAssets();
 
         try {
-            InputStream is= assetManager.open("jsons/phonebook.json");
-            InputStreamReader isr= new InputStreamReader(is);
-            BufferedReader reader= new BufferedReader (isr);
-            StringBuffer buffer= new StringBuffer();
-            String line= reader.readLine();
-            while (line!=null){
-                buffer.append(line+"\n");
-                line=reader.readLine();
+            SharedPreferences sharedPreferences = getSharedPreferences("phonenumbers",MODE_PRIVATE);
+            String savedPhonenumberData = sharedPreferences.getString("phonenumbers",null);
+            if(savedPhonenumberData != null){
+                jsonObject = new JSONObject(savedPhonenumberData);
             }
-            String jsonData= buffer.toString();
+            else {
+                InputStream is = assetManager.open("jsons/phonebook.json");
+                InputStreamReader isr = new InputStreamReader(is);
+                BufferedReader reader = new BufferedReader(isr);
+                StringBuffer buffer = new StringBuffer();
+                String line = reader.readLine();
+                while (line != null) {
+                    buffer.append(line + "\n");
+                    line = reader.readLine();
+                }
+                String jsonData = buffer.toString();
 
-            JSONObject jsonObject = new JSONObject(jsonData);
+                jsonObject = new JSONObject(jsonData);
+
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("phonenumbers", jsonObject.toString());
+                editor.commit();
+            }
+
             JSONArray arr = jsonObject.getJSONArray("phonenumbers");
 
             recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
@@ -70,12 +86,16 @@ public class phonebook extends AppCompatActivity {
                 received_jsonObject.put("phonenumber", received_phonenumber);
 
                 if(received_name != null && received_phonenumber != null){
-                    Toast.makeText(getApplicationContext(), received_name + "  " + received_phonenumber, Toast.LENGTH_SHORT).show();
+                    adapter.setArrayData(received_jsonObject);
 
                     arr.put(received_jsonObject);
-                    //json파일에 이거를 저장해야됨
 
-                    adapter.setArrayData(received_jsonObject);
+                    JSONObject newJsonObject = new JSONObject();
+                    newJsonObject.put("phonenumbers", arr);
+
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("phonenumbers", newJsonObject.toString());
+                    editor.commit();
                 }
             } catch (JSONException e) {e.printStackTrace();}
 
