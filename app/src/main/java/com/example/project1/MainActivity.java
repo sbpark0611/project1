@@ -7,10 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.project1.R;
-import com.example.project1.about;
-import com.example.project1.gallery;
-import com.example.project1.phonebook;
+import com.example.project1.gallery.gallery;
+import com.example.project1.namecard.about;
+import com.example.project1.phonebook.phonebook;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

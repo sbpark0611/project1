@@ -1,18 +1,20 @@
-package com.example.project1;
+package com.example.project1.namecard;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.project1.R;
+import com.example.project1.gallery.ImageAdapter;
+import com.example.project1.gallery.gallery;
+import com.example.project1.phonebook.phonebook;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class about extends AppCompatActivity {
