@@ -60,10 +60,10 @@ public class gallery extends AppCompatActivity {
 
                 switch (item.getItemId()) {
                     case R.id.phonebook:
+                        startActivity(new Intent(getApplicationContext(), phonebook.class));
+                        overridePendingTransition(0,0);
                         return true;
                     case R.id.gallary:
-                        startActivity(new Intent(getApplicationContext(), gallery.class));
-                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.about:
                         startActivity(new Intent(getApplicationContext(), about.class));
