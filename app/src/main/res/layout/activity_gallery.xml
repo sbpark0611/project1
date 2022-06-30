@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gallery" >
+    tools:context=".gallery.gallery" >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -24,19 +24,5 @@
         app:menu="@menu/menu_navigation" >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/bottom_navigation">
-
-        <ImageView
-            android:id="@+id/bigImageView"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_baseline_account_box_24" />
-
-    </FrameLayout>
 
 </RelativeLayout>

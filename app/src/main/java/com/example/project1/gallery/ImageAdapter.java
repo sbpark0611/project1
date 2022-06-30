@@ -1,10 +1,14 @@
 package com.example.project1.gallery;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -17,8 +21,10 @@ import java.util.ArrayList;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
     private ArrayList<Drawable> arrayList;
+    Context gallerycontext;
 
-    public ImageAdapter() {
+    public ImageAdapter(Context context) {
+        gallerycontext = context;
         arrayList = new ArrayList<Drawable>();
     }
 
@@ -45,13 +51,11 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
             public void onClick(View v) {
                 Toast.makeText(v.getContext(), holder.getAdapterPosition()+"번 눌림", Toast.LENGTH_SHORT).show();
 
-                ImageView bigImageView = (ImageView)v.findViewById(R.id.bigImageView);
-                bigImageView.setImageDrawable(drawable);
-                bigImageView.setVisibility(View.VISIBLE);
+                Intent intent = new Intent(v.getContext(), BigImage.class);
+                gallerycontext.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
 
             }
         });
-
     }
 
     public static int findByString(Context context, String resourceName, String type) {

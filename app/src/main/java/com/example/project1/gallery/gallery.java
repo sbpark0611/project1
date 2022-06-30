@@ -16,6 +16,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -49,7 +50,7 @@ public class gallery extends AppCompatActivity {
         recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
-        adapter = new ImageAdapter();
+        adapter = new ImageAdapter(getApplicationContext());
         for (int i = 1; i <= imagenum; i++) {
             Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_"+Integer.toString(i), "drawable"));
             adapter.setArrayData(drawable);
@@ -81,16 +82,6 @@ public class gallery extends AppCompatActivity {
             }
         });
         //navigation 끝
-
-        ImageView bigImageView = (ImageView)findViewById(R.id.bigImageView);
-        bigImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bigImageView.setImageDrawable(null);
-                bigImageView.setVisibility(View.GONE);
-            }
-        });
-
     }
 
     public static int findByString(Context context, String resourceName, String type) {
