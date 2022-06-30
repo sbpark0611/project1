@@ -1,4 +1,4 @@
-package com.example.project1;
+package com.example.project1.namecard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,9 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
+
+import com.example.project1.R;
+import com.example.project1.namecard.about;
 
 public class combineImage extends AppCompatActivity {
 

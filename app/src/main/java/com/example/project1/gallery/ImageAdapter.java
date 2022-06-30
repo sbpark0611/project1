@@ -1,4 +1,4 @@
-package com.example.project1;
+package com.example.project1.gallery;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -11,8 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.project1.R;
 
 import java.util.ArrayList;
 

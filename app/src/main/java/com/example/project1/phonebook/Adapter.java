@@ -1,4 +1,4 @@
-package com.example.project1;
+package com.example.project1.phonebook;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.project1.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,4 +1,4 @@
-package com.example.project1;
+package com.example.project1.phonebook;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
@@ -16,6 +15,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.project1.R;
+import com.example.project1.namecard.about;
+import com.example.project1.gallery.gallery;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
