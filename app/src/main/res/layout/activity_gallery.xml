@@ -8,13 +8,6 @@
     tools:context=".gallery">
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitCenter"
-        android:layout_gravity="center_vertical|center_horizontal"
-        app:srcCompat="@drawable/ic_baseline_image_24" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -26,6 +19,17 @@
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/menu_navigation" />
 
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/grid_view"
+        android:listSelector="@drawable/gridview_selector"
+        android:numColumns="3"
+        android:layout_height="fill_parent" android:layout_width="fill_parent"
+        android:columnWidth="90dp"
+        android:horizontalSpacing="1dp"
+        android:verticalSpacing="1dp"
+        android:gravity="center"
+        android:stretchMode="columnWidth" >
+    </GridView>
 </RelativeLayout>
 
 

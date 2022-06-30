@@ -8,6 +8,7 @@
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/drawable/selector.xml" value="0.1265" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_about.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_add_phonenumber.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_gallery.xml" value="0.10764944275582573" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_phonebook.xml" value="0.1096757852077001" />
@@ -15,6 +16,9 @@
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/fragment_gallary.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/fragment_phonebook.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/fragment_three.xml" value="0.20677083333333332" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/grid_layout.xml" value="0.16" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/gridview_selector.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/itempanel.xml" value="0.12512664640324214" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/list.xml" value="0.20677083333333332" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/menu/menu_navigation.xml" value="0.15185185185185185" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/menu/menubar.xml" value="0.4" />
