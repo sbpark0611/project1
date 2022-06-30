@@ -65,9 +65,9 @@ public class about extends AppCompatActivity {
 
         //이미지 가져오기
         Intent getImageIntent = getIntent();
-        System.out.println("pic_"+getImageIntent.getStringExtra("name"));
-        if(getImageIntent.getStringExtra("name")!=null) {
-            Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_" + getImageIntent.getStringExtra("name"), "drawable"));
+        System.out.println("pic_"+getImageIntent.getStringExtra("drawable_number"));
+        if(getImageIntent.getStringExtra("drawable_number")!=null) {
+            Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_" + getImageIntent.getStringExtra("drawable_number"), "drawable"));
             selectImage.setImageDrawable(drawable);
         }
 
