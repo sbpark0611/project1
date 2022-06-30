@@ -35,7 +35,6 @@
             android:layout_width="350dp"
             android:layout_height="350dp"
             android:layout_gravity="center"
-            android:visibility="gone"
             app:srcCompat="@drawable/ic_baseline_account_box_24" />
 
     </FrameLayout>
