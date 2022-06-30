@@ -14,7 +14,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     public TextView text_name;
     public TextView text_phonenumber;
 
-    ViewHolder(Context context, View itemView) {
+    public ViewHolder(Context context, View itemView) {
         super(itemView);
         imageview = itemView.findViewById(R.id.imageView);
         text_name = itemView.findViewById(R.id.text_name);

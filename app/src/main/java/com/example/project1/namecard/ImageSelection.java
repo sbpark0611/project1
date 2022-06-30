@@ -35,6 +35,7 @@ public class ImageSelection extends AppCompatActivity {
         adapter = new ImageSelectAdapter();
         for (int i = 1; i <= imagenum; i++) {
             Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_"+Integer.toString(i), "drawable"));
+
             adapter.setArrayData(drawable);
         }
 

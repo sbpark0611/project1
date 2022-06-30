@@ -13,7 +13,6 @@ import android.view.MenuItem;
 
 import com.example.project1.R;
 import com.example.project1.gallery.gallery;
-import com.example.project1.phonebook.Adapter;
 import com.example.project1.phonebook.phonebook;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -28,7 +27,7 @@ import java.io.InputStreamReader;
 
 public class NameSelection extends AppCompatActivity {
     RecyclerView recyclerView;
-    Adapter adapter;
+    NameSelectAdapter adapter;
     JSONObject jsonObject;
 
     @Override
@@ -68,7 +67,7 @@ public class NameSelection extends AppCompatActivity {
             recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
 
-            adapter = new Adapter();
+            adapter = new NameSelectAdapter(this);
             for (int i = 0; i < arr.length(); i++) {
                 adapter.setArrayData(arr.getJSONObject(i));
             }

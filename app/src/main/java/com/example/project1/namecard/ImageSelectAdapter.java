@@ -1,6 +1,9 @@
 package com.example.project1.namecard;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,14 +15,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1.R;
+import com.example.project1.gallery.BigImage;
 import com.example.project1.gallery.ImageViewHolder;
 
 import java.util.ArrayList;
 
 public class ImageSelectAdapter extends RecyclerView.Adapter<ImageViewHolder> {
     private ArrayList<Drawable> arrayList;
-
+    Context context;
     public ImageSelectAdapter() {
+        this.context = context;
         arrayList = new ArrayList<Drawable>();
     }
 
@@ -44,7 +49,11 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageViewHolder> {
         holder.imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), holder.getAdapterPosition()+"번 눌림", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(v.getContext(), holder.getAdapterPosition()+"번 눌림", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(), about.class);
+                intent.putExtra("drawable_number", Integer.toString(holder.getAdapterPosition()+1));
+                context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
+
 
             }
         });

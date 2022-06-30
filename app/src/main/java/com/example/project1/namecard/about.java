@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -21,8 +22,12 @@ import com.example.project1.gallery.gallery;
 import com.example.project1.phonebook.phonebook;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class about extends AppCompatActivity {
+import org.json.JSONException;
+import org.json.JSONObject;
 
+public class about extends AppCompatActivity {
+    NameSelectAdapter nameSelectAdapter;
+    ImageSelectAdapter imageSelectAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +40,19 @@ public class about extends AppCompatActivity {
             public void onClick(View v){
                 Intent intent = new Intent(getApplicationContext(), NameSelection.class);
                 startActivity(intent);
+
             }
+
         });
+        //텍스트 가져오기
+        Intent getContactIntent = getIntent();
+
+        String received_name = getContactIntent.getStringExtra("name");
+        String received_phonenumber = getContactIntent.getStringExtra("phonenumber");
+        if(received_name!=null && received_phonenumber !=null){
+            selectText.setText(received_name+ " "+ received_phonenumber);
+        }
+
 
         ImageView selectImage = (ImageView)findViewById(R.id.selectImage);
         selectImage.setOnClickListener(new View.OnClickListener(){
@@ -46,6 +62,15 @@ public class about extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //이미지 가져오기
+        Intent getImageIntent = getIntent();
+        System.out.println("pic_"+getImageIntent.getStringExtra("name"));
+        if(getImageIntent.getStringExtra("name")!=null) {
+            Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_" + getImageIntent.getStringExtra("name"), "drawable"));
+            selectImage.setImageDrawable(drawable);
+        }
+
 
         ImageButton combineButton = (ImageButton)findViewById(R.id.combine_button);
         combineButton.setOnClickListener(new View.OnClickListener(){
