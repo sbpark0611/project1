@@ -8,12 +8,36 @@
     tools:context=".about">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/selectText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="about"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+        android:gravity="center_horizontal"
+        android:text="Select the number and name"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/selectImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="5dp"
+        app:srcCompat="@drawable/ic_baseline_image_24" />
+
+    <ImageButton
+        android:id="@+id/combine_button"
+        android:layout_width="67dp"
+        android:layout_height="67dp"
+        android:layout_above="@+id/selectImage"
+        android:layout_below="@+id/selectText"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginBottom="-175dp"
+        app:srcCompat="@drawable/ic_baseline_add_box_24" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -24,5 +48,6 @@
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/menu_navigation" />
+
 
 </RelativeLayout>
