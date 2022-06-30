@@ -5,9 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gallery">
+    tools:context=".phonebook">
 
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -19,18 +23,4 @@
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/menu_navigation" />
 
-    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/grid_view"
-        android:listSelector="@drawable/gridview_selector"
-        android:numColumns="3"
-
-        android:layout_height="fill_parent" android:layout_width="fill_parent"
-        android:columnWidth="300dp"
-        android:horizontalSpacing="1dp"
-        android:verticalSpacing="1dp"
-        android:gravity="center"
-        android:stretchMode="columnWidth" >
-    </GridView>
 </RelativeLayout>
-
-
