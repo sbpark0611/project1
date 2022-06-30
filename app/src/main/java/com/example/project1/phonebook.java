@@ -107,6 +107,9 @@ public class phonebook extends AppCompatActivity {
 
         //navigation 시작
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        //네비게이션 메뉴 중 몇번째 거 가져온다
+        bottomNavigationView.getMenu().getItem(0).setChecked(true);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
