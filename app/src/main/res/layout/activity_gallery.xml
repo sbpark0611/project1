@@ -23,8 +23,9 @@
         android:id="@+id/grid_view"
         android:listSelector="@drawable/gridview_selector"
         android:numColumns="3"
+
         android:layout_height="fill_parent" android:layout_width="fill_parent"
-        android:columnWidth="90dp"
+        android:columnWidth="300dp"
         android:horizontalSpacing="1dp"
         android:verticalSpacing="1dp"
         android:gravity="center"
