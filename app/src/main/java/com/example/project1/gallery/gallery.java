@@ -1,4 +1,4 @@
-package com.example.project1;
+package com.example.project1.gallery;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -20,6 +20,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.project1.R;
+import com.example.project1.namecard.about;
+import com.example.project1.phonebook.phonebook;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
