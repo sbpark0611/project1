@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class ImageSelectAdapter extends RecyclerView.Adapter<ImageViewHolder> {
     private ArrayList<Drawable> arrayList;
     Context context;
-    public ImageSelectAdapter() {
+    public ImageSelectAdapter(Context context) {
         this.context = context;
         arrayList = new ArrayList<Drawable>();
     }
@@ -49,7 +49,7 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageViewHolder> {
         holder.imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(v.getContext(), holder.getAdapterPosition()+"번 눌림", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), holder.getAdapterPosition()+"번 눌림", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(v.getContext(), about.class);
                 intent.putExtra("drawable_number", Integer.toString(holder.getAdapterPosition()+1));
                 context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));

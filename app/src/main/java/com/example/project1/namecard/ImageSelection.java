@@ -32,7 +32,7 @@ public class ImageSelection extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this,
                 3));
 
-        adapter = new ImageSelectAdapter();
+        adapter = new ImageSelectAdapter(getApplicationContext());
         for (int i = 1; i <= imagenum; i++) {
             Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_"+Integer.toString(i), "drawable"));
             adapter.setArrayData(drawable);
