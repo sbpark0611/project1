@@ -7,13 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".phonebook">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="phonebook"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyceler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -24,5 +22,15 @@
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/menu_navigation" />
+
+    <ImageButton
+        android:id="@+id/add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/recyceler_view"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="26dp"
+        app:srcCompat="@drawable/ic_baseline_image_24" />
 
 </RelativeLayout>
