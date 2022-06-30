@@ -1,7 +1,6 @@
-package com.example.project1.phonebook;
+package com.example.project1.namecard;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,15 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
 
 import com.example.project1.R;
-import com.example.project1.namecard.about;
 import com.example.project1.gallery.gallery;
+import com.example.project1.phonebook.Adapter;
+import com.example.project1.phonebook.phonebook;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
@@ -29,18 +26,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class phonebook extends AppCompatActivity {
-
+public class NameSelection extends AppCompatActivity {
     RecyclerView recyclerView;
     Adapter adapter;
     JSONObject jsonObject;
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phonebook);
-
+        setContentView(R.layout.activity_name_selection);
         //json 읽어오기 시작
         AssetManager assetManager= getAssets();
 
@@ -79,69 +73,41 @@ public class phonebook extends AppCompatActivity {
                 adapter.setArrayData(arr.getJSONObject(i));
             }
 
-            //새로 추가하는 거 받아오는 거
-            JSONObject received_jsonObject = new JSONObject();
-            try {
-                Intent getIntent = getIntent();
-                String received_name = getIntent.getStringExtra("name");
-                String received_phonenumber = getIntent.getStringExtra("phonenumber");
-                received_jsonObject.put("name", received_name);
-                received_jsonObject.put("phonenumber", received_phonenumber);
-
-                if(received_name != null && received_phonenumber != null){
-                    adapter.setArrayData(received_jsonObject);
-
-                    arr.put(received_jsonObject);
-
-                    JSONObject newJsonObject = new JSONObject();
-                    newJsonObject.put("phonenumbers", arr);
-
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("phonenumbers", newJsonObject.toString());
-                    editor.commit();
-                }
-            } catch (JSONException e) {e.printStackTrace();}
-
             recyclerView.setAdapter(adapter);
 
         }catch (IOException e) {e.printStackTrace();}
         catch (JSONException e) {e.printStackTrace();}
         //json 읽어오기 끝
 
-        //navigation 시작
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.getMenu().getItem(0).setChecked(true);
+        // Initialize and assign variable
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+        bottomNavigationView.getMenu().getItem(2).setChecked(true);
+//        // Set Home selected
+//        bottomNavigationView.setSelectedItemId(R.id.home);
 
+        // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId()) {
+                switch(item.getItemId())
+                {
                     case R.id.phonebook:
+                        startActivity(new Intent(getApplicationContext(), phonebook.class));
+                        overridePendingTransition(R.anim.slide_in_left,android.R.anim.fade_out);
                         return true;
                     case R.id.gallary:
                         startActivity(new Intent(getApplicationContext(), gallery.class));
-                        overridePendingTransition(R.anim.slide_in_right,android.R.anim.fade_out);
+                        overridePendingTransition(R.anim.slide_in_left,android.R.anim.fade_out);
                         return true;
                     case R.id.about:
-                        startActivity(new Intent(getApplicationContext(), about.class));
-                        overridePendingTransition(R.anim.slide_in_right,android.R.anim.fade_out);
-
                         return true;
                 }
                 return false;
             }
         });
-        //navigation 끝
 
-        //연락처 추가 버튼
-        ImageButton addButton = (ImageButton)findViewById(R.id.add_button);
-        addButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), AddPhonenumber.class);
-                startActivity(intent);
-            }
-        });
+
     }
+
 }

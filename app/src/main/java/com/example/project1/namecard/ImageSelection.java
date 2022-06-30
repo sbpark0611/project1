@@ -1,6 +1,7 @@
 package com.example.project1.namecard;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,53 +9,37 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.project1.R;
-import com.example.project1.gallery.ImageAdapter;
 import com.example.project1.gallery.gallery;
 import com.example.project1.phonebook.phonebook;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class about extends AppCompatActivity {
+public class ImageSelection extends AppCompatActivity {
+    RecyclerView recyclerView;
+    ImageSelectAdapter adapter;
+    int imagenum = 20;
 
-
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.activity_image_selection);
+        recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new GridLayoutManager(this,
+                3));
 
-        TextView selectText = (TextView) findViewById(R.id.selectText);
-        selectText.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), NameSelection.class);
-                startActivity(intent);
-            }
-        });
+        adapter = new ImageSelectAdapter();
+        for (int i = 1; i <= imagenum; i++) {
+            Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_"+Integer.toString(i), "drawable"));
+            adapter.setArrayData(drawable);
+        }
 
-        ImageView selectImage = (ImageView)findViewById(R.id.selectImage);
-        selectImage.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), ImageSelection.class);
-                startActivity(intent);
-            }
-        });
+        recyclerView.setAdapter(adapter);
 
-        ImageButton combineButton = (ImageButton)findViewById(R.id.combine_button);
-        combineButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), combineImage.class);
-                startActivity(intent);
-            }
-        });
 
         // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
@@ -71,12 +56,13 @@ public class about extends AppCompatActivity {
                 {
                     case R.id.phonebook:
                         startActivity(new Intent(getApplicationContext(), phonebook.class));
-//                        overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.fade_out);
                         overridePendingTransition(R.anim.slide_in_left,android.R.anim.fade_out);
-                        return true;
+
+
                     case R.id.gallary:
                         startActivity(new Intent(getApplicationContext(), gallery.class));
                         overridePendingTransition(R.anim.slide_in_left,android.R.anim.fade_out);
+
                         return true;
                     case R.id.about:
                         return true;
@@ -84,11 +70,9 @@ public class about extends AppCompatActivity {
                 return false;
             }
         });
-
     }
 
     public static int findByString(Context context, String resourceName, String type) {
         return context.getResources().getIdentifier(resourceName, type, context.getPackageName());
     }
-
 }

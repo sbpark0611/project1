@@ -69,13 +69,13 @@ public class gallery extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.phonebook:
                         startActivity(new Intent(getApplicationContext(), phonebook.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(R.anim.slide_in_left,android.R.anim.fade_out);
                         return true;
                     case R.id.gallary:
                         return true;
                     case R.id.about:
                         startActivity(new Intent(getApplicationContext(), about.class));
-                        overridePendingTransition(0, 0);
+                        overridePendingTransition(R.anim.slide_in_right,android.R.anim.fade_out);
                         return true;
                 }
                 return false;
