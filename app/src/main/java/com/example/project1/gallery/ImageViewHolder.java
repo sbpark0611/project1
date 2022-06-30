@@ -12,7 +12,7 @@ import com.example.project1.R;
 public class ImageViewHolder extends RecyclerView.ViewHolder {
     public ImageView imageview;
 
-    ImageViewHolder(Context context, View itemView) {
+    public ImageViewHolder(Context context, View itemView) {
         super(itemView);
         imageview = itemView.findViewById(R.id.imagepanel_imageview);
     }
