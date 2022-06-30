@@ -73,4 +73,8 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         arrayList.add(jsonData);
     }
 
+    public ArrayList<JSONObject> getArrayData() {
+        return arrayList;
+    }
+
 }

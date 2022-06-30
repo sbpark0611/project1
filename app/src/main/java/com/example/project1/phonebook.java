@@ -23,6 +23,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class phonebook extends AppCompatActivity {
 
@@ -52,13 +53,31 @@ public class phonebook extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject(jsonData);
             JSONArray arr = jsonObject.getJSONArray("phonenumbers");
 
-            recyclerView = (RecyclerView)findViewById(R.id.recyceler_view);
+            recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
 
             adapter = new Adapter();
             for (int i = 0; i < arr.length(); i++) {
                 adapter.setArrayData(arr.getJSONObject(i));
             }
+
+            JSONObject received_jsonObject = new JSONObject();
+            try {
+                Intent getIntent = getIntent();
+                String received_name = getIntent.getStringExtra("name");
+                String received_phonenumber = getIntent.getStringExtra("phonenumber");
+                received_jsonObject.put("name", received_name);
+                received_jsonObject.put("phonenumber", received_phonenumber);
+
+                if(received_name != null && received_phonenumber != null){
+                    Toast.makeText(getApplicationContext(), received_name + "  " + received_phonenumber, Toast.LENGTH_SHORT).show();
+
+                    arr.put(received_jsonObject);
+                    //json파일에 이거를 저장해야됨
+
+                    adapter.setArrayData(received_jsonObject);
+                }
+            } catch (JSONException e) {e.printStackTrace();}
 
             recyclerView.setAdapter(adapter);
 
@@ -94,7 +113,6 @@ public class phonebook extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Toast.makeText(v.getContext(), "연락처 추가", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), AddPhonenumber.class);
                 startActivity(intent);
             }
