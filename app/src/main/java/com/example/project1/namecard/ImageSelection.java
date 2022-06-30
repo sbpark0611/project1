@@ -35,7 +35,6 @@ public class ImageSelection extends AppCompatActivity {
         adapter = new ImageSelectAdapter();
         for (int i = 1; i <= imagenum; i++) {
             Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_"+Integer.toString(i), "drawable"));
-
             adapter.setArrayData(drawable);
         }
 
@@ -58,12 +57,10 @@ public class ImageSelection extends AppCompatActivity {
                     case R.id.phonebook:
                         startActivity(new Intent(getApplicationContext(), phonebook.class));
                         overridePendingTransition(R.anim.slide_in_left,android.R.anim.fade_out);
-
-
+                        return true;
                     case R.id.gallary:
                         startActivity(new Intent(getApplicationContext(), gallery.class));
                         overridePendingTransition(R.anim.slide_in_left,android.R.anim.fade_out);
-
                         return true;
                     case R.id.about:
                         return true;
