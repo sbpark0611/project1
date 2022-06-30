@@ -2,19 +2,55 @@ package com.example.project1;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class about extends AppCompatActivity {
 
+    RecyclerView recyclerView;
+    ImageAdapter adapter;
+    int imagenum = 20;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+
+
+//
+//        recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+//        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+//
+//        adapter = new ImageAdapter();
+//        for (int i = 1; i <= imagenum; i++) {
+//            Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_"+Integer.toString(i), "drawable"));
+//            adapter.setArrayData(drawable);
+//        }
+//
+//        recyclerView.setAdapter(adapter);
+
+
+        ImageButton combineButton = (ImageButton)findViewById(R.id.combine_button);
+        combineButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), combineImage.class);
+                startActivity(intent);
+            }
+        });
+
+
+
 
         // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
@@ -46,4 +82,9 @@ public class about extends AppCompatActivity {
         });
 
     }
+
+    public static int findByString(Context context, String resourceName, String type) {
+        return context.getResources().getIdentifier(resourceName, type, context.getPackageName());
+    }
+
 }
