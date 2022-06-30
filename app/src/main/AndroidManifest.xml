@@ -34,6 +34,10 @@
             android:name=".gallery.gallery"
             android:exported="false" />
         <activity
+            android:name=".gallery.BigImage"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
+        <activity
             android:name=".phonebook.phonebook"
             android:exported="false" />
         <activity
