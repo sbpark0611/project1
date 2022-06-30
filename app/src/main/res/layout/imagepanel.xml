@@ -10,9 +10,10 @@
 
     <ImageView
         android:id="@+id/imagepanel_imageview"
-        android:layout_width="185dp"
-        android:layout_height="185dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         android:layout_weight="1"
+        android:layout_margin="10dp"
         app:srcCompat="@drawable/ic_baseline_account_box_24"
         tools:srcCompat="@drawable/ic_baseline_account_box_24" />
 

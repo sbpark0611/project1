@@ -17,6 +17,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -54,6 +56,8 @@ public class gallery extends AppCompatActivity {
 
         //navigation 시작
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.getMenu().getItem(1).setChecked(true);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -74,6 +78,16 @@ public class gallery extends AppCompatActivity {
             }
         });
         //navigation 끝
+
+        ImageView bigImageView = (ImageView)findViewById(R.id.bigImageView);
+        bigImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bigImageView.setImageDrawable(null);
+                bigImageView.setVisibility(View.GONE);
+            }
+        });
+
     }
 
     public static int findByString(Context context, String resourceName, String type) {
