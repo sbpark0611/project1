@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -45,8 +47,20 @@ public class phonebook extends AppCompatActivity {
         //json 읽어오기 시작
         AssetManager assetManager= getAssets();
 
+        SharedPreferences sharedPreferences = getSharedPreferences("phonenumbers",MODE_PRIVATE);
+
+        Intent getIntent = getIntent();
+
+        String received_drawable_number = getIntent.getStringExtra("drawable_number");
+        String received_profile_number = getIntent.getStringExtra("profile_number");
+
+        if(received_drawable_number != null && received_profile_number != null){
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(received_profile_number, received_drawable_number);
+            editor.commit();
+        }
+
         try {
-            SharedPreferences sharedPreferences = getSharedPreferences("phonenumbers",MODE_PRIVATE);
             String savedPhonenumberData = sharedPreferences.getString("phonenumbers",null);
             if(savedPhonenumberData != null){
                 jsonObject = new JSONObject(savedPhonenumberData);
@@ -77,20 +91,27 @@ public class phonebook extends AppCompatActivity {
 
             adapter = new Adapter(getApplicationContext());
             for (int i = 0; i < arr.length(); i++) {
-                adapter.setArrayData(arr.getJSONObject(i));
+                String savedProfileImage = sharedPreferences.getString(Integer.toString(i),null);
+                if(savedProfileImage != null){
+                    Drawable profileDrawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_"+savedProfileImage, "drawable"));
+                    adapter.setArrayData(arr.getJSONObject(i), profileDrawable);
+                }
+                else{
+                    adapter.setArrayData(arr.getJSONObject(i), getResources().getDrawable(R.drawable.ic_baseline_account_box_24));
+                }
             }
 
             //새로 추가하는 거 받아오는 거
             JSONObject received_jsonObject = new JSONObject();
             try {
-                Intent getIntent = getIntent();
                 String received_name = getIntent.getStringExtra("name");
                 String received_phonenumber = getIntent.getStringExtra("phonenumber");
+
                 received_jsonObject.put("name", received_name);
                 received_jsonObject.put("phonenumber", received_phonenumber);
 
                 if(received_name != null && received_phonenumber != null){
-                    adapter.setArrayData(received_jsonObject);
+                    adapter.setArrayData(received_jsonObject, getResources().getDrawable(R.drawable.ic_baseline_account_box_24));
 
                     arr.put(received_jsonObject);
 
@@ -101,6 +122,7 @@ public class phonebook extends AppCompatActivity {
                     editor.putString("phonenumbers", newJsonObject.toString());
                     editor.commit();
                 }
+
             } catch (JSONException e) {e.printStackTrace();}
 
             recyclerView.setAdapter(adapter);
@@ -143,5 +165,9 @@ public class phonebook extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public static int findByString(Context context, String resourceName, String type) {
+        return context.getResources().getIdentifier(resourceName, type, context.getPackageName());
     }
 }

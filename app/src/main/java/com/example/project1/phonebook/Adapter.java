@@ -4,6 +4,7 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +24,13 @@ import java.util.ArrayList;
 
 public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     private ArrayList<JSONObject> arrayList;
+    private ArrayList<Drawable> drawableArrayList;
     Context context;
+
     public Adapter(Context context) {
         this.context = context;
         arrayList = new ArrayList<>();
+        drawableArrayList = new ArrayList<>();
     }
 
     @NonNull
@@ -47,6 +51,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         try {
             holder.text_name.setText(jsonData.getString("name"));
             holder.text_phonenumber.setText(jsonData.getString("phonenumber"));
+            holder.imageview.setImageDrawable(drawableArrayList.get(position));
         } catch (JSONException e) {e.printStackTrace();}
 
         //전화번호부 클릭했을 때 반응
@@ -65,8 +70,10 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         holder.imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), holder.getAdapterPosition()+"번 "+holder.text_name.getText(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(v.getContext(), ProfileSelection.class);
+
+                intent.putExtra("profilenumber", Integer.toString(holder.getAdapterPosition()));
+
                 context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
             }
         });
@@ -78,7 +85,8 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     }
 
     // 데이터를 입력
-    public void setArrayData(JSONObject jsonData) {
+    public void setArrayData(JSONObject jsonData, Drawable drawable) {
         arrayList.add(jsonData);
+        drawableArrayList.add(drawable);
     }
 }

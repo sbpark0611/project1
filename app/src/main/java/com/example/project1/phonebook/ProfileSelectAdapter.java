@@ -22,8 +22,11 @@ import java.util.ArrayList;
 public class ProfileSelectAdapter extends RecyclerView.Adapter<ImageViewHolder> {
     private ArrayList<Drawable> arrayList;
     Context context;
-    public ProfileSelectAdapter(Context context) {
+    String profilenumber;
+
+    public ProfileSelectAdapter(Context context, String received_profilenumber) {
         this.context = context;
+        profilenumber = received_profilenumber;
         arrayList = new ArrayList<Drawable>();
     }
 
@@ -48,9 +51,9 @@ public class ProfileSelectAdapter extends RecyclerView.Adapter<ImageViewHolder> 
         holder.imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), holder.getAdapterPosition()+"번 눌림", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(v.getContext(), phonebook.class);
                 intent.putExtra("drawable_number", Integer.toString(holder.getAdapterPosition()+1));
+                intent.putExtra("profile_number", profilenumber);
                 context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
             }
         });
