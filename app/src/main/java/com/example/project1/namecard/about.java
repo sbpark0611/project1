@@ -37,6 +37,7 @@ public class about extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
+        //텍스트 버튼 클릭 시
         TextView selectText = (TextView) findViewById(R.id.selectText);
         selectText.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -56,6 +57,7 @@ public class about extends AppCompatActivity {
 
         String received_name = getContactIntent.getStringExtra("name");
         String received_phonenumber = getContactIntent.getStringExtra("phonenumber");
+        //이름을 선택 했을 때
         if(received_name!=null && received_phonenumber !=null){
             selectText.setText(received_name+ " "+ received_phonenumber);
 
@@ -67,6 +69,7 @@ public class about extends AppCompatActivity {
             currentNameText = received_name;
             currentPhonenumberText = received_phonenumber;
         }
+        //이름이 선택은 안 되었는 데, 이미 기존에 선택 된 것이 있을 때
         else if(savedNameTextData != null && savedPhonenumberTextData != null){
             selectText.setText(savedNameTextData+ " "+ savedPhonenumberTextData);
 
@@ -79,6 +82,7 @@ public class about extends AppCompatActivity {
         }
 
 
+        //이미지 버튼 클릭 시
         ImageView selectImage = (ImageView)findViewById(R.id.selectImage);
         selectImage.setOnClickListener(new View.OnClickListener(){
             @Override

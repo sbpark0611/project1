@@ -75,7 +75,7 @@ public class phonebook extends AppCompatActivity {
             recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
 
-            adapter = new Adapter();
+            adapter = new Adapter(getApplicationContext());
             for (int i = 0; i < arr.length(); i++) {
                 adapter.setArrayData(arr.getJSONObject(i));
             }
