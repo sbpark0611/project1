@@ -29,18 +29,21 @@ public class ProfileSelection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_selection);
+
+        Intent getIntent = getIntent();
+        String received_profilenumber = getIntent.getStringExtra("profilenumber");
+
         recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this,
                 3));
 
-        adapter = new ProfileSelectAdapter(this);
+        adapter = new ProfileSelectAdapter(getApplicationContext(), received_profilenumber);
         for (int i = 1; i <= imagenum; i++) {
             Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_"+Integer.toString(i), "drawable"));
             adapter.setArrayData(drawable);
         }
 
         recyclerView.setAdapter(adapter);
-
 
         // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);

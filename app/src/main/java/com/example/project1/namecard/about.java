@@ -115,7 +115,6 @@ public class about extends AppCompatActivity {
             currentDrawableNumber = null;
         }
 
-
         ImageButton combineButton = (ImageButton)findViewById(R.id.combine_button);
         combineButton.setOnClickListener(new View.OnClickListener(){
             @Override
