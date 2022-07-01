@@ -1,6 +1,9 @@
 package com.example.project1.phonebook;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1.R;
+import com.example.project1.namecard.ImageSelection;
+import com.example.project1.namecard.about;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,8 +23,9 @@ import java.util.ArrayList;
 
 public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     private ArrayList<JSONObject> arrayList;
-
-    public Adapter() {
+    Context context;
+    public Adapter(Context context) {
+        this.context = context;
         arrayList = new ArrayList<>();
     }
 
@@ -60,9 +66,10 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(), holder.getAdapterPosition()+"번 "+holder.text_name.getText(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(), ProfileSelection.class);
+                context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
             }
         });
-
     }
 
     @Override
