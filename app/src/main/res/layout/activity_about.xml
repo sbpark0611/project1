@@ -14,9 +14,9 @@
         android:layout_above="@+id/combine_button"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="-4dp"
-        android:layout_marginBottom="67dp"
+        android:layout_marginStart="-1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="65dp"
         android:gravity="center_horizontal"
         android:text="Select the Name
                   and Phone Number"
@@ -42,10 +42,11 @@
         android:layout_above="@+id/selectImage"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="150dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="55dp"
-        app:srcCompat="@drawable/ic_baseline_add_box_24" />
+        android:layout_marginStart="148dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="57dp"
+        app:srcCompat="@drawable/ic_baseline_add_box_24"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

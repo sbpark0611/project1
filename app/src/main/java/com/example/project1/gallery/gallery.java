@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.project1.R;
+import com.example.project1.namecard.Namecard;
 import com.example.project1.namecard.about;
 import com.example.project1.phonebook.phonebook;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -74,7 +75,7 @@ public class gallery extends AppCompatActivity {
                     case R.id.gallary:
                         return true;
                     case R.id.about:
-                        startActivity(new Intent(getApplicationContext(), about.class));
+                        startActivity(new Intent(getApplicationContext(), Namecard.class));
                         overridePendingTransition(R.anim.slide_in_right,android.R.anim.fade_out);
                         return true;
                 }

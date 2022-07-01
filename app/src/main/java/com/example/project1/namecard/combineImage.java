@@ -22,18 +22,22 @@ public class combineImage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combine_image);
 
+        Intent getAboutIntent = getIntent();
+        String received_name = getAboutIntent.getStringExtra("name");
+        String received_phonenumber = getAboutIntent.getStringExtra("phonenumber");
+        String received_drawable_number = getAboutIntent.getStringExtra("drawable_number");
+
         combinedImage = (ImageView) findViewById(R.id.combinedImage);
+
+
 
         confirmAddButton = (Button) findViewById(R.id.confirm_add_button);
         confirmAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), about.class);
-
                 intent.putExtra("combined", combinedImage.getId());
-
                 startActivity(intent);
-
             }
         });
 

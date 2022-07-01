@@ -9,44 +9,45 @@
         android:id="@+id/question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
         android:scaleX="1.5"
         android:scaleY="1.5"
         android:text="이 형태의 명함으로 만드시겠습니까?"
-        app:layout_constraintBottom_toTopOf="@+id/combinedImage"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/combinedImage"
+        app:layout_constraintVertical_bias="0.169" />
 
     <Button
         android:id="@+id/cancel_add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="24dp"
         android:text="취소"
         app:layout_constraintEnd_toStartOf="@+id/confirm_add_button"
-        app:layout_constraintHorizontal_bias="0.576"
+        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/combinedImage" />
+        app:layout_constraintTop_toBottomOf="@+id/question" />
 
     <Button
         android:id="@+id/confirm_add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="84dp"
         android:text="확인"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/combinedImage" />
+        app:layout_constraintTop_toBottomOf="@+id/question" />
 
     <ImageView
         android:id="@+id/combinedImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="301dp"
+        android:layout_height="291dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.238"
         app:srcCompat="@drawable/ic_baseline_add_box_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

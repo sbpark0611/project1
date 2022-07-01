@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.project1.gallery.gallery;
+import com.example.project1.namecard.Namecard;
 import com.example.project1.namecard.about;
 import com.example.project1.phonebook.phonebook;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.about:
-                        startActivity(new Intent(getApplicationContext(), about.class));
+                        startActivity(new Intent(getApplicationContext(), Namecard.class));
                         overridePendingTransition(0,0);
                         return true;
                 }
