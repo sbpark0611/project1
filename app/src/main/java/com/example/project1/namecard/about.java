@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.project1.R;
 import com.example.project1.gallery.ImageAdapter;
@@ -28,6 +29,8 @@ import org.json.JSONObject;
 public class about extends AppCompatActivity {
     NameSelectAdapter nameSelectAdapter;
     ImageSelectAdapter imageSelectAdapter;
+
+    String currentNameText, currentPhonenumberText, currentDrawableNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +48,34 @@ public class about extends AppCompatActivity {
 
         });
         //텍스트 가져오기
+        SharedPreferences textSharedPreferences = getSharedPreferences("about_phonenumber",MODE_PRIVATE);
+        String savedNameTextData = textSharedPreferences.getString("name",null);
+        String savedPhonenumberTextData = textSharedPreferences.getString("phonenumber",null);
+
         Intent getContactIntent = getIntent();
 
         String received_name = getContactIntent.getStringExtra("name");
         String received_phonenumber = getContactIntent.getStringExtra("phonenumber");
         if(received_name!=null && received_phonenumber !=null){
             selectText.setText(received_name+ " "+ received_phonenumber);
+
+            SharedPreferences.Editor textEditor = textSharedPreferences.edit();
+            textEditor.putString("name", received_name);
+            textEditor.putString("phonenumber", received_phonenumber);
+            textEditor.commit();
+
+            currentNameText = received_name;
+            currentPhonenumberText = received_phonenumber;
+        }
+        else if(savedNameTextData != null && savedPhonenumberTextData != null){
+            selectText.setText(savedNameTextData+ " "+ savedPhonenumberTextData);
+
+            currentNameText = savedNameTextData;
+            currentPhonenumberText = savedPhonenumberTextData;
+        }
+        else{
+            currentNameText = null;
+            currentPhonenumberText = null;
         }
 
 
@@ -64,11 +89,30 @@ public class about extends AppCompatActivity {
         });
 
         //이미지 가져오기
+        SharedPreferences drawableSharedPreferences = getSharedPreferences("drawable_number",MODE_PRIVATE);
+        String savedDrawableNumber = drawableSharedPreferences.getString("drawable_number",null);
+
         Intent getImageIntent = getIntent();
-        System.out.println("pic_"+getImageIntent.getStringExtra("drawable_number"));
-        if(getImageIntent.getStringExtra("drawable_number")!=null) {
-            Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_" + getImageIntent.getStringExtra("drawable_number"), "drawable"));
+        String getDrawableNumber = getImageIntent.getStringExtra("drawable_number");
+
+        if(getDrawableNumber!=null) {
+            Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_" + getDrawableNumber, "drawable"));
             selectImage.setImageDrawable(drawable);
+
+            SharedPreferences.Editor drawableEditor = drawableSharedPreferences.edit();
+            drawableEditor.putString("drawable_number", getDrawableNumber);
+            drawableEditor.commit();
+
+            currentDrawableNumber = getDrawableNumber;
+        }
+        else if(savedDrawableNumber != null){
+            Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_" + savedDrawableNumber, "drawable"));
+            selectImage.setImageDrawable(drawable);
+
+            currentDrawableNumber = savedDrawableNumber;
+        }
+        else{
+            currentDrawableNumber = null;
         }
 
 
@@ -76,8 +120,19 @@ public class about extends AppCompatActivity {
         combineButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), combineImage.class);
-                startActivity(intent);
+                if(currentNameText != null && currentPhonenumberText != null && currentDrawableNumber != null) {
+                    Intent intent = new Intent(getApplicationContext(), combineImage.class);
+                    intent.putExtra("name", currentNameText);
+                    intent.putExtra("phonenumber", currentPhonenumberText);
+                    intent.putExtra("drawable_number", currentDrawableNumber);
+                    startActivity(intent);
+                }
+                else if(currentNameText == null || currentPhonenumberText == null){
+                    Toast.makeText(v.getContext(), "연락처를 선택해주세요", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(v.getContext(), "사진을 선택해주세요", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

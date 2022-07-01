@@ -53,9 +53,6 @@ public class NameSelectAdapter extends RecyclerView.Adapter<ViewHolder> {
         holder.text_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), holder.getAdapterPosition()+"번 "+
-                        holder.text_name.getText()+"\n"+holder.text_phonenumber.getText(), Toast.LENGTH_SHORT).show();
-
                 Intent intent = new Intent(v.getContext(), about.class);
                 intent.putExtra("name", holder.text_name.getText().toString());
                 intent.putExtra("phonenumber", holder.text_phonenumber.getText().toString());
@@ -65,8 +62,6 @@ public class NameSelectAdapter extends RecyclerView.Adapter<ViewHolder> {
         holder.text_phonenumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), holder.getAdapterPosition()+"번 "+
-                        holder.text_name.getText()+"\n"+holder.text_phonenumber.getText(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(v.getContext(), about.class);
                 intent.putExtra("name", holder.text_name.getText().toString());
                 intent.putExtra("phonenumber", holder.text_phonenumber.getText().toString());
@@ -76,8 +71,8 @@ public class NameSelectAdapter extends RecyclerView.Adapter<ViewHolder> {
         holder.imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), holder.getAdapterPosition()+"번 "+
-                        holder.text_name.getText()+"\n"+holder.text_phonenumber.getText(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(v.getContext(), holder.getAdapterPosition()+"번 "+
+//                        holder.text_name.getText()+"\n"+holder.text_phonenumber.getText(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(v.getContext(), about.class);
                 intent.putExtra("name", holder.text_name.getText().toString());
                 intent.putExtra("phonenumber", holder.text_phonenumber.getText().toString());

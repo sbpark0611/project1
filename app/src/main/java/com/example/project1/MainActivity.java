@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -21,6 +22,20 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+
+        //껐다키면 데이터 초기화
+        SharedPreferences textSharedPreferences = getSharedPreferences("about_phonenumber",MODE_PRIVATE);
+        SharedPreferences.Editor textEditor = textSharedPreferences.edit();
+        textEditor.putString("name", null);
+        textEditor.putString("phonenumber", null);
+        textEditor.commit();
+
+        SharedPreferences drawableSharedPreferences = getSharedPreferences("drawable_number",MODE_PRIVATE);
+        SharedPreferences.Editor drawableEditor = drawableSharedPreferences.edit();
+        drawableEditor.putString("drawable_number", null);
+        drawableEditor.commit();
+
+
 //
 //        // Set Home selected
 //        bottomNavigationView.setSelectedItemId(R.id.home);
