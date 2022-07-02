@@ -2,7 +2,9 @@ package com.example.project1.namecard;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
@@ -58,9 +60,14 @@ public class Namecard extends AppCompatActivity {
             received_size.add(getNameCardIntent.getIntExtra("TextSize", 10));
         }
         if(numofarray!=0){
-
             recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+
+//            DividerItemDecoration dividerItemDecoration =   new DividerItemDecoration(recyclerView.getContext(),new LinearLayoutManager(this).getOrientation());
+            RecyclerDecoration spaceDecoration = new RecyclerDecoration(20);
+
             recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+//            recyclerView.addItemDecoration(dividerItemDecoration);
+            recyclerView.addItemDecoration(spaceDecoration);
 
             adapter = new NamecardAdapter(getApplicationContext());
             for (int i = 1; i < numofarray + 1; i++) {
