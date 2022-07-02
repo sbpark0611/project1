@@ -24,8 +24,12 @@ public class Namecard extends AppCompatActivity {
 
     RecyclerView recyclerView;
     NamecardAdapter adapter;
-    ArrayList<String> received_image;
-    ArrayList<String> received_text;
+    static ArrayList<String> received_image= new ArrayList<>();
+    static ArrayList<String> received_text= new ArrayList<>();
+    static ArrayList<Integer> received_size= new ArrayList<>();
+    static ArrayList<Float> received_X= new ArrayList<>();
+    static ArrayList<Float> received_Y= new ArrayList<>();
+
     public static int numofarray = 0;
 
     @Override
@@ -33,8 +37,7 @@ public class Namecard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_namecard);
 
-        received_image = new ArrayList<String>();
-        received_text = new ArrayList<String>();
+
 
         ImageView selectImage = (ImageView)findViewById(R.id.add_button);
         selectImage.setOnClickListener(new View.OnClickListener(){
@@ -46,9 +49,16 @@ public class Namecard extends AppCompatActivity {
         });
         //about -> combineImage -> Namecard 통해서 보내온 file 저장.
         Intent getNameCardIntent = getIntent();
-        if(getNameCardIntent.getStringExtra("ImageNum")!=null){
+        if(getNameCardIntent.getStringExtra("ImageNum")!=null) {
+
             received_image.add(getNameCardIntent.getStringExtra("ImageNum"));
             received_text.add(getNameCardIntent.getStringExtra("text"));
+            received_X.add(getNameCardIntent.getFloatExtra("TransX", 0));
+            received_Y.add(getNameCardIntent.getFloatExtra("TransY", 0));
+            received_size.add(getNameCardIntent.getIntExtra("TextSize", 10));
+        }
+        if(numofarray!=0){
+
             recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
             recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
 
@@ -57,6 +67,9 @@ public class Namecard extends AppCompatActivity {
                 Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(),"pic_" + received_image.get(i-1),"drawable"));
                 adapter.setImageArrayData(drawable);
                 adapter.setTextArrayData(received_text.get(i-1));
+                adapter.setFontSizeArrayList(received_size.get(i-1));
+                adapter.setTransXArrayList(received_X.get(i-1));
+                adapter.setTransYArrayList(received_Y.get(i-1));
             }
 
             recyclerView.setAdapter(adapter);
