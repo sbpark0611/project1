@@ -35,8 +35,8 @@ public class ProfileSelection extends AppCompatActivity {
         recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this,3));
 
-        adapter = new ProfileSelectAdapter(getApplicationContext(), getIntent.getStringExtra("profilenumber"),
-                getIntent.getStringExtra("name"), getIntent.getStringExtra("phonenumber"), getIntent.getStringExtra("caller"));
+        adapter = new ProfileSelectAdapter(getApplicationContext(), getIntent.getStringExtra("profilenumber"), getIntent.getStringExtra("name"),
+                getIntent.getStringExtra("phonenumber"), getIntent.getStringExtra("explanation"), getIntent.getStringExtra("caller"));
 
         for (int i = 1; i <= imagenum; i++) {
             Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_"+Integer.toString(i), "drawable"));

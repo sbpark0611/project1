@@ -25,14 +25,16 @@ public class ProfileSelectAdapter extends RecyclerView.Adapter<ImageViewHolder> 
     String profilenumber;
     String name;
     String phonenumber;
+    String explanation;
     String caller;
 
-    public ProfileSelectAdapter(Context context, String received_profilenumber, String name, String phonenumber, String caller) {
+    public ProfileSelectAdapter(Context context, String received_profilenumber, String name, String phonenumber, String explanation, String caller) {
         this.context = context;
         profilenumber = received_profilenumber;
         this.name = name;
         this.phonenumber = phonenumber;
         this.caller = caller;
+        this.explanation = explanation;
         arrayList = new ArrayList<Drawable>();
     }
 
@@ -62,6 +64,7 @@ public class ProfileSelectAdapter extends RecyclerView.Adapter<ImageViewHolder> 
                     intent.putExtra("drawable_number", Integer.toString(holder.getAdapterPosition() + 1));
                     intent.putExtra("name", name);
                     intent.putExtra("phonenumber", phonenumber);
+                    intent.putExtra("explanation", explanation);
                     intent.putExtra("profilenumber", profilenumber);
                     context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
                 }
