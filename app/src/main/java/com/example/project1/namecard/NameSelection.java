@@ -99,7 +99,7 @@ public class NameSelection extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), gallery.class));
                         overridePendingTransition(R.anim.slide_in_left,android.R.anim.fade_out);
                         return true;
-                    case R.id.about:
+                    case R.id.namecard:
                         return true;
                 }
                 return false;
