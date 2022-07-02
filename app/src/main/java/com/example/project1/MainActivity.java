@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         drawableEditor.putString("drawable_number", null);
         drawableEditor.commit();
 
-
 //
 //        // Set Home selected
 //        bottomNavigationView.setSelectedItemId(R.id.home);

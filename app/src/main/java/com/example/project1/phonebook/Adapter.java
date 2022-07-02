@@ -58,22 +58,30 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         holder.text_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), holder.getAdapterPosition()+"번 "+holder.text_name.getText(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(), DetailedPhonebook.class);
+                intent.putExtra("name", holder.text_name.getText());
+                intent.putExtra("phonenumber", holder.text_phonenumber.getText());
+                intent.putExtra("profilenumber", Integer.toString(holder.getAdapterPosition()+1));
+                context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
             }
         });
         holder.text_phonenumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), holder.getAdapterPosition()+"번 "+holder.text_name.getText(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(), DetailedPhonebook.class);
+                intent.putExtra("name", holder.text_name.getText());
+                intent.putExtra("phonenumber", holder.text_phonenumber.getText());
+                intent.putExtra("profilenumber", Integer.toString(holder.getAdapterPosition()));
+                context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
             }
         });
         holder.imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ProfileSelection.class);
-
+                Intent intent = new Intent(v.getContext(), DetailedPhonebook.class);
+                intent.putExtra("name", holder.text_name.getText());
+                intent.putExtra("phonenumber", holder.text_phonenumber.getText());
                 intent.putExtra("profilenumber", Integer.toString(holder.getAdapterPosition()));
-
                 context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
             }
         });

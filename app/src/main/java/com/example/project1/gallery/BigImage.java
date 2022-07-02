@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.project1.R;
 import com.example.project1.phonebook.AddPhonenumber;
+import com.example.project1.phonebook.DetailedPhonebook;
 
 public class BigImage extends AppCompatActivity {
 
@@ -26,16 +27,29 @@ public class BigImage extends AppCompatActivity {
 
         Intent getIntent = getIntent();
 
-        System.out.println("pic_"+getIntent.getStringExtra("drawable_number"));
-
-        Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_"+getIntent.getStringExtra("drawable_number"), "drawable"));
-        bigImage.setImageDrawable(drawable);
+        if(getIntent.getStringExtra("drawable_number") != null) {
+            Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_" + getIntent.getStringExtra("drawable_number"), "drawable"));
+            bigImage.setImageDrawable(drawable);
+        }
+        else {
+            Drawable drawable = getResources().getDrawable(R.drawable.ic_baseline_account_box_24);
+            bigImage.setImageDrawable(drawable);
+        }
 
         bigImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), gallery.class);
-                startActivity(intent);
+                if (getIntent.getStringExtra("caller") != null && getIntent.getStringExtra("caller").equals("detailedphonebook")) {
+                    Intent intent = new Intent(getApplicationContext(), DetailedPhonebook.class);
+                    intent.putExtra("name", getIntent.getStringExtra("name"));
+                    intent.putExtra("phonenumber", getIntent.getStringExtra("phonenumber"));
+                    intent.putExtra("profilenumber", getIntent.getStringExtra("profilenumber"));
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(getApplicationContext(), gallery.class);
+                    startActivity(intent);
+                }
             }
         });
     }
