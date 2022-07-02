@@ -23,10 +23,16 @@ public class ProfileSelectAdapter extends RecyclerView.Adapter<ImageViewHolder> 
     private ArrayList<Drawable> arrayList;
     Context context;
     String profilenumber;
+    String name;
+    String phonenumber;
+    String caller;
 
-    public ProfileSelectAdapter(Context context, String received_profilenumber) {
+    public ProfileSelectAdapter(Context context, String received_profilenumber, String name, String phonenumber, String caller) {
         this.context = context;
         profilenumber = received_profilenumber;
+        this.name = name;
+        this.phonenumber = phonenumber;
+        this.caller = caller;
         arrayList = new ArrayList<Drawable>();
     }
 
@@ -51,10 +57,20 @@ public class ProfileSelectAdapter extends RecyclerView.Adapter<ImageViewHolder> 
         holder.imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), phonebook.class);
-                intent.putExtra("drawable_number", Integer.toString(holder.getAdapterPosition()+1));
-                intent.putExtra("profile_number", profilenumber);
-                context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
+                if(caller.equals("editdetail")){
+                    Intent intent = new Intent(v.getContext(), EditDetail.class);
+                    intent.putExtra("drawable_number", Integer.toString(holder.getAdapterPosition() + 1));
+                    intent.putExtra("name", name);
+                    intent.putExtra("phonenumber", phonenumber);
+                    intent.putExtra("profilenumber", profilenumber);
+                    context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
+                }
+                else {
+                    Intent intent = new Intent(v.getContext(), phonebook.class);
+                    intent.putExtra("drawable_number", Integer.toString(holder.getAdapterPosition() + 1));
+                    intent.putExtra("profile_number", profilenumber);
+                    context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
+                }
             }
         });
 

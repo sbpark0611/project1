@@ -165,6 +165,14 @@ public class phonebook extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //drawable 초기화
+        for(int i = 0; i < 10; i++){
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(Integer.toString(adapter.getItemCount()+i), null);
+            editor.commit();
+        }
+
     }
 
     public static int findByString(Context context, String resourceName, String type) {

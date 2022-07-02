@@ -31,13 +31,16 @@ public class ProfileSelection extends AppCompatActivity {
         setContentView(R.layout.activity_image_selection);
 
         Intent getIntent = getIntent();
-        String received_profilenumber = getIntent.getStringExtra("profilenumber");
 
         recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,
-                3));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
 
-        adapter = new ProfileSelectAdapter(getApplicationContext(), received_profilenumber);
+        adapter = new ProfileSelectAdapter(getApplicationContext(), getIntent.getStringExtra("profilenumber"),
+                getIntent.getStringExtra("name"), getIntent.getStringExtra("phonenumber"), getIntent.getStringExtra("caller"));
+
+        System.out.println(getIntent.getStringExtra("profilenumber")+"  "+getIntent.getStringExtra("name")+"  "
+                +getIntent.getStringExtra("phonenumber")+"  "+getIntent.getStringExtra("caller"));
+
         for (int i = 1; i <= imagenum; i++) {
             Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_"+Integer.toString(i), "drawable"));
             adapter.setArrayData(drawable);
@@ -55,7 +58,6 @@ public class ProfileSelection extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 switch(item.getItemId())
                 {
                     case R.id.phonebook:
