@@ -63,7 +63,7 @@ public class ProfileSelection extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), gallery.class));
                         overridePendingTransition(R.anim.slide_in_right,android.R.anim.fade_out);
                         return true;
-                    case R.id.about:
+                    case R.id.namecard:
                         startActivity(new Intent(getApplicationContext(), about.class));
                         overridePendingTransition(R.anim.slide_in_right,android.R.anim.fade_out);
                         return true;

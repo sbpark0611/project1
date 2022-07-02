@@ -78,7 +78,7 @@ public class gallery extends AppCompatActivity {
                         return true;
                     case R.id.gallary:
                         return true;
-                    case R.id.about:
+                    case R.id.namecard:
                         startActivity(new Intent(getApplicationContext(), Namecard.class));
                         overridePendingTransition(R.anim.slide_in_right,android.R.anim.fade_out);
                         return true;
