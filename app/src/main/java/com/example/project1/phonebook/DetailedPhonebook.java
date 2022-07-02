@@ -55,9 +55,8 @@ public class DetailedPhonebook extends AppCompatActivity {
 
         if(received_explanation != null) {
             detailed_text_detail.setText(received_explanation);
-
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(received_profilenumber + "explanation", received_drawable_number);
+            editor.putString(received_profilenumber + "explanation", received_explanation);
             editor.commit();
         }
         else {
@@ -184,6 +183,7 @@ public class DetailedPhonebook extends AppCompatActivity {
                 intent.putExtra("drawable_number", savedProfileImage);
                 intent.putExtra("name", received_name);
                 intent.putExtra("phonenumber", received_phonenumber);
+                intent.putExtra("explanation", sharedPreferences.getString(received_profilenumber + "explanation", null));
                 intent.putExtra("profilenumber", received_profilenumber);
                 startActivity(intent);
             }

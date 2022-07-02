@@ -17,6 +17,7 @@ public class AddPhonenumber extends AppCompatActivity {
     Button cancelAddButton;
     EditText addTextName;
     EditText addTextPhonenumber;
+    EditText addTextDetail;
     RecyclerView recyclerView;
     
     @Override
@@ -31,6 +32,7 @@ public class AddPhonenumber extends AppCompatActivity {
             public void onClick(View v){
                 addTextName = (EditText)findViewById(R.id.add_text_name);
                 addTextPhonenumber = (EditText)findViewById(R.id.add_text_phonenumber);
+                addTextDetail = (EditText)findViewById(R.id.add_text_detail);
 
                 if (addTextName.getText().toString().length() == 0){
                     Toast.makeText(v.getContext(), "이름을 입력해주세요", Toast.LENGTH_SHORT).show();
@@ -43,7 +45,10 @@ public class AddPhonenumber extends AppCompatActivity {
 
                     intent.putExtra("name", addTextName.getText().toString());
                     intent.putExtra("phonenumber", addTextPhonenumber.getText().toString());
-
+                    if(!addTextDetail.getText().toString().equals("")) {
+                        System.out.println(addTextDetail.getText().toString());
+                        intent.putExtra("explanation", addTextDetail.getText().toString());
+                    }
                     startActivity(intent);
                 }
             }
