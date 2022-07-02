@@ -16,12 +16,18 @@ import java.util.ArrayList;
 public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
     private ArrayList<Drawable> imageArrayList;
     private ArrayList<String> textArrayList;
+    private ArrayList<Integer> fontSizeArrayList;
+    private ArrayList<Float> transXArrayList;
+    private ArrayList<Float> transYArrayList;
 
     Context context;
     public NamecardAdapter(Context context) {
         this.context = context;
         imageArrayList = new ArrayList<Drawable>();
         textArrayList = new ArrayList<String>();
+        fontSizeArrayList = new ArrayList<>();
+        transXArrayList = new ArrayList<>();
+        transYArrayList = new ArrayList<>();
     }
 
     @NonNull
@@ -39,12 +45,20 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull NamecardViewHolder holder, int position) {
         Drawable drawable = imageArrayList.get(position);
-
         holder.imageview.setImageDrawable(drawable);
 
         String string = textArrayList.get(position);
-
         holder.textView.setText(string);
+
+        int size = fontSizeArrayList.get(position);
+        holder.textView.setTextSize(size);
+
+        float X = transXArrayList.get(position);
+        holder.textView.setTranslationX(X);
+
+        float Y = transYArrayList.get(position);
+        holder.textView.setTranslationY(Y);
+
         holder.imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,4 +87,7 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
     public void setTextArrayData(String string) {
         textArrayList.add(string);
     }
+    public void setFontSizeArrayList(int size) {fontSizeArrayList.add(size);}
+    public void setTransXArrayList(float X) {transXArrayList.add(X);}
+    public void setTransYArrayList(float Y) {transYArrayList.add(Y);}
 }

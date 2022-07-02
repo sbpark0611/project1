@@ -57,7 +57,7 @@ public class phonebook extends AppCompatActivity {
         if(received_drawable_number != null && received_profile_number != null){
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString(received_profile_number, received_drawable_number);
-            editor.commit();//내거 PUSH 했어
+            editor.commit();
         }
 
         try {

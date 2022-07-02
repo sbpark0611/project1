@@ -157,6 +157,9 @@ public class combineImage extends AppCompatActivity {
                 Namecard.numofarray+=1;
                 intent.putExtra("ImageNum", savedDrawableNumber);
                 intent.putExtra("text",savedNameTextData +"\n" +savedPhonenumberTextData );
+                intent.putExtra("TextSize", fontSize);
+                intent.putExtra("TransX", combinedText.getTranslationX());
+                intent.putExtra("TransY", combinedText.getTranslationY());
                 startActivity(intent);
 
             }
@@ -174,24 +177,4 @@ public class combineImage extends AppCompatActivity {
     public static int findByString(Context context, String resourceName, String type) {
         return context.getResources().getIdentifier(resourceName, type, context.getPackageName());
     }
-    private void screenshot(Bitmap bm, int num) {
-        try {
-            File path = new File("/drawable");
-            if(! path.isDirectory()) {
-                path.mkdirs();
-            }
-            String temp = "/drawable/";
-            temp = temp + "namecard" + Integer.toString(num);
-            temp = temp + ".png";
-            FileOutputStream out = new FileOutputStream(temp);
-            bm.compress(Bitmap.CompressFormat.JPEG, 100, out);
-            sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED,
-                    Uri.parse("file://" + Environment.getExternalStorageDirectory())));
-        } catch (FileNotFoundException e) {
-            Log.d("FileNotFoundException:", e.getMessage());
-        }
-
-    }
-
-
 }
