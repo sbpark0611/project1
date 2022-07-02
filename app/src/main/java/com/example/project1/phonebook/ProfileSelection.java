@@ -38,9 +38,6 @@ public class ProfileSelection extends AppCompatActivity {
         adapter = new ProfileSelectAdapter(getApplicationContext(), getIntent.getStringExtra("profilenumber"),
                 getIntent.getStringExtra("name"), getIntent.getStringExtra("phonenumber"), getIntent.getStringExtra("caller"));
 
-        System.out.println(getIntent.getStringExtra("profilenumber")+"  "+getIntent.getStringExtra("name")+"  "
-                +getIntent.getStringExtra("phonenumber")+"  "+getIntent.getStringExtra("caller"));
-
         for (int i = 1; i <= imagenum; i++) {
             Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(), "pic_"+Integer.toString(i), "drawable"));
             adapter.setArrayData(drawable);

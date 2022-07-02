@@ -35,6 +35,7 @@ public class EditDetail extends AppCompatActivity {
         String received_drawable_number = getIntent.getStringExtra("drawable_number");
         String received_name = getIntent.getStringExtra("name");
         String received_phonenumber = getIntent.getStringExtra("phonenumber");
+        String received_explanation = getIntent.getStringExtra("explanation");
         String received_profilenumber = getIntent.getStringExtra("profilenumber");
 
         if(received_drawable_number!= null){
@@ -47,6 +48,9 @@ public class EditDetail extends AppCompatActivity {
         if(received_phonenumber!= null){
             edit_detailed_text_phonenumber.setText(received_phonenumber);
         }
+        if(received_explanation!= null){
+            edit_detailed_text_detail.setText(received_explanation);
+        }
 
         edit_detailed_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +60,7 @@ public class EditDetail extends AppCompatActivity {
                 intent.putExtra("profilenumber", received_profilenumber);
                 intent.putExtra("name", edit_detailed_text_name.getText().toString());
                 intent.putExtra("phonenumber", edit_detailed_text_phonenumber.getText().toString());
+                intent.putExtra("explanation", edit_detailed_text_detail.getText().toString());
                 intent.putExtra("caller", "editdetail");
 
                 startActivity(intent);
@@ -72,6 +77,7 @@ public class EditDetail extends AppCompatActivity {
 
                 intent.putExtra("name", received_name);
                 intent.putExtra("phonenumber", received_phonenumber);
+                intent.putExtra("explanation", received_explanation);
                 intent.putExtra("drawable_number", sharedPreferences.getString(received_profilenumber,null));
                 intent.putExtra("profilenumber", received_profilenumber);
 
@@ -87,6 +93,7 @@ public class EditDetail extends AppCompatActivity {
 
                 intent.putExtra("name", edit_detailed_text_name.getText().toString());
                 intent.putExtra("phonenumber", edit_detailed_text_phonenumber.getText().toString());
+                intent.putExtra("explanation", edit_detailed_text_detail.getText().toString());
                 intent.putExtra("drawable_number", received_drawable_number);
                 intent.putExtra("profilenumber", received_profilenumber);
 

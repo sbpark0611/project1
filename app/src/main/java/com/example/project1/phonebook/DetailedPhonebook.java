@@ -47,10 +47,22 @@ public class DetailedPhonebook extends AppCompatActivity {
         Intent getIntent = getIntent();
         String received_name = getIntent.getStringExtra("name");
         String received_phonenumber = getIntent.getStringExtra("phonenumber");
+        String received_explanation = getIntent.getStringExtra("explanation");
         String received_drawable_number = getIntent.getStringExtra("drawable_number");
         String received_profilenumber = getIntent.getStringExtra("profilenumber");
 
         SharedPreferences sharedPreferences = getSharedPreferences("phonenumbers",MODE_PRIVATE);
+
+        if(received_explanation != null) {
+            detailed_text_detail.setText(received_explanation);
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(received_profilenumber + "explanation", received_drawable_number);
+            editor.commit();
+        }
+        else {
+            detailed_text_detail.setText(sharedPreferences.getString(received_profilenumber + "explanation", null));
+        }
 
         String savedProfileImage = sharedPreferences.getString(received_profilenumber,null);
         if(received_drawable_number != null){
@@ -119,7 +131,7 @@ public class DetailedPhonebook extends AppCompatActivity {
         backbutton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                    Intent intent = new Intent(getApplicationContext(), phonebook.class);
+                Intent intent = new Intent(getApplicationContext(), phonebook.class);
                 startActivity(intent);
             }
         });
