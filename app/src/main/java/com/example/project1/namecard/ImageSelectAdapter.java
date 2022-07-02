@@ -49,6 +49,7 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageViewHolder> {
         holder.imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //about에다가 선정한 이미지 보내주기
                 Intent intent = new Intent(v.getContext(), about.class);
                 intent.putExtra("drawable_number", Integer.toString(holder.getAdapterPosition()+1));
                 context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
