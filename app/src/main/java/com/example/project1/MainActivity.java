@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), gallery.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.about:
+                    case R.id.namecard:
                         startActivity(new Intent(getApplicationContext(), Namecard.class));
                         overridePendingTransition(0,0);
                         return true;
