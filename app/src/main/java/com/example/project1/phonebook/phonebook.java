@@ -3,6 +3,7 @@ package com.example.project1.phonebook;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -87,7 +88,10 @@ public class phonebook extends AppCompatActivity {
             JSONArray arr = jsonObject.getJSONArray("phonenumbers");
 
             recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+            DividerItemDecoration dividerItemDecoration =   new DividerItemDecoration(recyclerView.getContext(),new LinearLayoutManager(this).getOrientation());
+
             recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+            recyclerView.addItemDecoration(dividerItemDecoration);
 
             adapter = new Adapter(getApplicationContext());
             for (int i = 0; i < arr.length(); i++) {

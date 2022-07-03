@@ -5,8 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:orientation="horizontal"
+    android:visibility="visible"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent">
+    app:layout_constraintStart_toStartOf="parent"
+    android:background="@drawable/edge">
+
 
     <ImageView
         android:id="@+id/imageView"
@@ -14,7 +17,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         app:srcCompat="@drawable/ic_baseline_account_box_24"
-        tools:srcCompat="@drawable/ic_baseline_account_box_24" />
+        tools:srcCompat="@drawable/ic_baseline_account_box_24"
+        android:background="@drawable/edge"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,12 +30,15 @@
             android:id="@+id/text_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="NAME" />
+            android:text="NAME"
+            android:textSize="25dp"
+            />
 
         <TextView
             android:id="@+id/text_phonenumber"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="010-0000-0000" />
+            android:text="010-0000-0000"
+            />
     </LinearLayout>
 </LinearLayout>

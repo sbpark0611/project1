@@ -1,11 +1,13 @@
 package com.example.project1.phonebook;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +15,9 @@ import android.widget.ImageView;
 
 import com.example.project1.R;
 import com.example.project1.gallery.BigImage;
+import com.example.project1.gallery.gallery;
+import com.example.project1.namecard.Namecard;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class EditDetail extends AppCompatActivity {
 
@@ -101,6 +106,29 @@ public class EditDetail extends AppCompatActivity {
             }
         });
 
+        //navigation 시작
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.getMenu().getItem(0).setChecked(true);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.phonebook:
+                        return true;
+                    case R.id.gallary:
+                        startActivity(new Intent(getApplicationContext(), gallery.class));
+                        overridePendingTransition(R.anim.slide_in_right,android.R.anim.fade_out);
+                        return true;
+                    case R.id.namecard:
+                        startActivity(new Intent(getApplicationContext(), Namecard.class));
+                        overridePendingTransition(R.anim.slide_in_right,android.R.anim.fade_out);
+                        return true;
+                }
+                return false;
+            }
+        });
     }
     public static int findByString(Context context, String resourceName, String type) {
         return context.getResources().getIdentifier(resourceName, type, context.getPackageName());
