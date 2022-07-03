@@ -68,23 +68,16 @@ public class SharedBigImage extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+
 //                imageLayout.setDrawingCacheEnabled(true);
-//
 //                Bitmap bm = imageLayout.getDrawingCache();
 //
 //                try {
-//
 //                    onCap(bm);
-//
 //                } catch (Exception e) {
-//
 //                } finally {
-//
 //                    bm.recycle();
-//
 //                }
-
-
 
                 Intent intent = new Intent(getApplicationContext(), Namecard.class);
                 startActivity(intent);
