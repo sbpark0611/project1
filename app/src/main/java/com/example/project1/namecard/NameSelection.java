@@ -10,6 +10,11 @@ import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.project1.R;
 import com.example.project1.gallery.gallery;
@@ -27,6 +32,9 @@ import java.io.InputStreamReader;
 
 public class NameSelection extends AppCompatActivity {
     RecyclerView recyclerView;
+    EditText inputText;
+    Button goButton;
+
     NameSelectAdapter adapter;
     JSONObject jsonObject;
 
@@ -34,6 +42,18 @@ public class NameSelection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name_selection);
+
+        inputText = (EditText) findViewById(R.id.input_text);
+        goButton = (Button) findViewById(R.id.go_button);
+        goButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), SharedBigImage.class);
+                intent.putExtra("inputtext", inputText.getText().toString());
+                startActivity(intent);
+            }
+        });
+
         //json 읽어오기 시작
         AssetManager assetManager= getAssets();
 

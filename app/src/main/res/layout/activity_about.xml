@@ -18,8 +18,7 @@
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="65dp"
         android:gravity="center_horizontal"
-        android:text="Select the Name
-                  and Phone Number"
+        android:text="Select the Name and Phone Number"
         android:textSize="30sp"
         android:textStyle="bold" />
 
