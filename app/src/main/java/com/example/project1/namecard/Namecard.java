@@ -39,8 +39,6 @@ public class Namecard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_namecard);
 
-
-
         ImageView selectImage = (ImageView)findViewById(R.id.add_button);
         selectImage.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -73,6 +71,7 @@ public class Namecard extends AppCompatActivity {
             for (int i = 1; i < numofarray + 1; i++) {
                 Drawable drawable = getResources().getDrawable(findByString(getApplicationContext(),"pic_" + received_image.get(i-1),"drawable"));
                 adapter.setImageArrayData(drawable);
+                adapter.setImageNumberArrayData(received_image.get(i-1));
                 adapter.setTextArrayData(received_text.get(i-1));
                 adapter.setFontSizeArrayList(received_size.get(i-1));
                 adapter.setTransXArrayList(received_X.get(i-1));

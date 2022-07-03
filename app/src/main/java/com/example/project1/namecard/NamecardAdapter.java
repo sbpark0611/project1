@@ -1,6 +1,9 @@
 package com.example.project1.namecard;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +13,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1.R;
+import com.example.project1.gallery.BigImage;
 
 import java.util.ArrayList;
 
 public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
     private ArrayList<Drawable> imageArrayList;
+    private ArrayList<String> imageNumberArrayList;
     private ArrayList<String> textArrayList;
     private ArrayList<Integer> fontSizeArrayList;
     private ArrayList<Float> transXArrayList;
@@ -24,6 +29,7 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
     public NamecardAdapter(Context context) {
         this.context = context;
         imageArrayList = new ArrayList<Drawable>();
+        imageNumberArrayList = new ArrayList<String>();
         textArrayList = new ArrayList<String>();
         fontSizeArrayList = new ArrayList<>();
         transXArrayList = new ArrayList<>();
@@ -47,6 +53,8 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
         Drawable drawable = imageArrayList.get(position);
         holder.imageview.setImageDrawable(drawable);
 
+        String drawablenumber = imageNumberArrayList.get(position);
+
         String string = textArrayList.get(position);
         holder.textView.setText(string);
 
@@ -62,10 +70,13 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
         holder.imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //about에다가 선정한 이미지 보내주기
-//                Intent intent = new Intent(v.getContext(), about.class);
-//                intent.putExtra("drawable_number", Integer.toString(holder.getAdapterPosition()+1));
-//                context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
+                Intent intent = new Intent(v.getContext(), SharedBigImage.class);
+                intent.putExtra("drawablenumber", drawablenumber);
+                intent.putExtra("string", string);
+                intent.putExtra("size", Integer.toString(size));
+                intent.putExtra("x", Float.toString(X));
+                intent.putExtra("y", Float.toString(Y));
+                context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
             }
         });
 
@@ -83,6 +94,9 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
     // 데이터를 입력
     public void setImageArrayData(Drawable drawable) {
         imageArrayList.add(drawable);
+    }
+    public void setImageNumberArrayData(String drawablenumber) {
+        imageNumberArrayList.add(drawablenumber);
     }
     public void setTextArrayData(String string) {
         textArrayList.add(string);

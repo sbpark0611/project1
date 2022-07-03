@@ -44,10 +44,9 @@ public class about extends AppCompatActivity {
             public void onClick(View v){
                 Intent intent = new Intent(getApplicationContext(), NameSelection.class);
                 startActivity(intent);
-
             }
-
         });
+
         //텍스트 가져오기
         SharedPreferences textSharedPreferences = getSharedPreferences("about_phonenumber",MODE_PRIVATE);
         String savedNameTextData = textSharedPreferences.getString("name",null);
@@ -57,8 +56,20 @@ public class about extends AppCompatActivity {
 
         String received_name = getContactIntent.getStringExtra("name");
         String received_phonenumber = getContactIntent.getStringExtra("phonenumber");
+        String received_inputtext = getContactIntent.getStringExtra("inputtext");
         //이름을 선택 했을 때
-        if(received_name!=null && received_phonenumber !=null){
+        if(received_inputtext != null){
+            selectText.setText(received_inputtext);
+
+            SharedPreferences.Editor textEditor = textSharedPreferences.edit();
+            textEditor.putString("name", received_inputtext);
+            textEditor.putString("phonenumber", "");
+            textEditor.commit();
+
+            currentNameText = received_inputtext;
+            currentPhonenumberText = "";
+        }
+        else if(received_name != null && received_phonenumber != null){
             selectText.setText(received_name+ " "+ received_phonenumber);
 
             SharedPreferences.Editor textEditor = textSharedPreferences.edit();
@@ -71,7 +82,7 @@ public class about extends AppCompatActivity {
         }
         //이름이 선택은 안 되었는 데, 이미 기존에 선택 된 것이 있을 때
         else if(savedNameTextData != null && savedPhonenumberTextData != null){
-            selectText.setText(savedNameTextData+ " "+ savedPhonenumberTextData);
+            selectText.setText(savedNameTextData + " " + savedPhonenumberTextData);
 
             currentNameText = savedNameTextData;
             currentPhonenumberText = savedPhonenumberTextData;
