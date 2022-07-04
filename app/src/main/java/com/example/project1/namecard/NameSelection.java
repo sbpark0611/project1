@@ -49,8 +49,7 @@ public class NameSelection extends AppCompatActivity {
         goButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), combineImage.class);
-                System.out.println(inputText.getText().toString());
+                Intent intent = new Intent(getApplicationContext(), about.class);
                 intent.putExtra("inputtext", inputText.getText().toString());
                 startActivity(intent);
             }
