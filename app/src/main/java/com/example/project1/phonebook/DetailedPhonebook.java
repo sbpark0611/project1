@@ -61,34 +61,8 @@ public class DetailedPhonebook extends AppCompatActivity {
             editor.putString(received_profilenumber, received_drawable_number);
             editor.commit();
 
-            String savedPhonenumberData = sharedPreferences.getString("phonenumbers",null);
 
-            try {
-                JSONObject jsonObject = new JSONObject(savedPhonenumberData);
-                JSONArray jsonArray = jsonObject.getJSONArray("phonenumbers");
 
-                JSONArray newJsonArray = new JSONArray();
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject jsonobj = jsonArray.getJSONObject(i);
-                    if(Integer.parseInt(received_profilenumber) != i){
-                        newJsonArray.put(jsonobj);
-                    }
-                    else{
-                        jsonobj.put("name", received_name);
-                        jsonobj.put("phonenumber", received_phonenumber);
-                        jsonobj.put("explanation", received_explanation);
-
-                        newJsonArray.put(jsonobj);
-                    }
-                }
-                JSONObject newJsonObject = new JSONObject();
-                newJsonObject.put("phonenumbers", newJsonArray);
-
-                SharedPreferences.Editor editor2 = sharedPreferences.edit();
-                editor2.putString("phonenumbers", newJsonObject.toString());
-                editor2.commit();
-
-            } catch (JSONException e) {e.printStackTrace();}
         }
         else if(savedProfileImage != null){
             detailed_profile_image.setImageDrawable(getResources().getDrawable(findByString(getApplicationContext(), "pic_"+savedProfileImage, "drawable")));
@@ -96,6 +70,35 @@ public class DetailedPhonebook extends AppCompatActivity {
         else{
             detailed_profile_image.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_account_box_24));
         }
+
+        String savedPhonenumberData = sharedPreferences.getString("phonenumbers",null);
+
+        try {
+            JSONObject jsonObject = new JSONObject(savedPhonenumberData);
+            JSONArray jsonArray = jsonObject.getJSONArray("phonenumbers");
+
+            JSONArray newJsonArray = new JSONArray();
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonobj = jsonArray.getJSONObject(i);
+                if(Integer.parseInt(received_profilenumber) != i){
+                    newJsonArray.put(jsonobj);
+                }
+                else{
+                    jsonobj.put("name", received_name);
+                    jsonobj.put("phonenumber", received_phonenumber);
+                    jsonobj.put("explanation", received_explanation);
+
+                    newJsonArray.put(jsonobj);
+                }
+            }
+            JSONObject newJsonObject = new JSONObject();
+            newJsonObject.put("phonenumbers", newJsonArray);
+
+            SharedPreferences.Editor editor2 = sharedPreferences.edit();
+            editor2.putString("phonenumbers", newJsonObject.toString());
+            editor2.commit();
+
+        } catch (JSONException e) {e.printStackTrace();}
 
         detailed_text_name.setText(received_name);
         detailed_text_phonenumber.setText(received_phonenumber);
