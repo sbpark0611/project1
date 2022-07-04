@@ -77,6 +77,7 @@ public class DetailedPhonebook extends AppCompatActivity {
                         jsonobj.put("name", received_name);
                         jsonobj.put("phonenumber", received_phonenumber);
                         jsonobj.put("explanation", received_explanation);
+
                         newJsonArray.put(jsonobj);
                     }
                 }
@@ -98,6 +99,7 @@ public class DetailedPhonebook extends AppCompatActivity {
 
         detailed_text_name.setText(received_name);
         detailed_text_phonenumber.setText(received_phonenumber);
+        detailed_text_detail.setText(received_explanation);
 
         detailed_profile_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,6 +113,7 @@ public class DetailedPhonebook extends AppCompatActivity {
                 }
                 intent.putExtra("name", received_name);
                 intent.putExtra("phonenumber", received_phonenumber);
+                intent.putExtra("explanation", received_explanation);
                 intent.putExtra("profilenumber", received_profilenumber);
                 intent.putExtra("caller", "detailedphonebook");
                 startActivity(intent);

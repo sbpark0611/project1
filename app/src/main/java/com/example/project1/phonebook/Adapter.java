@@ -51,6 +51,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         try {
             holder.text_name.setText(jsonData.getString("name"));
             holder.text_phonenumber.setText(jsonData.getString("phonenumber"));
+            holder.text_explanation.setText(jsonData.getString("explanation"));
             holder.imageview.setImageDrawable(drawableArrayList.get(position));
         } catch (JSONException e) {e.printStackTrace();}
 
