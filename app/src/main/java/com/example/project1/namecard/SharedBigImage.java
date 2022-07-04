@@ -100,31 +100,29 @@ public class SharedBigImage extends AppCompatActivity {
         shareButton = (Button) findViewById(R.id.sharebutton);
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
-        public void onClick(View v) {
-            imageLayout.setDrawingCacheEnabled(true);
-            Bitmap bm = imageLayout.getDrawingCache();
+            public void onClick(View v) {
+                imageLayout.setDrawingCacheEnabled(true);
+                Bitmap bm = imageLayout.getDrawingCache();
 
-            // Define image asset URI
-            Uri backgroundAssetUri = getImageUri(getApplicationContext(), bm);
-            String sourceApplication = "com.my.app";
+                // Define image asset URI
+                Uri backgroundAssetUri = getImageUri(getApplicationContext(), bm);
+                String sourceApplication = "com.my.app";
 
-            // Instantiate implicit intent with ADD_TO_STORY action and background asset
-            Intent intent = new Intent("com.instagram.share.ADD_TO_STORY");
+                // Instantiate implicit intent with ADD_TO_STORY action and background asset
+                Intent intent = new Intent("com.instagram.share.ADD_TO_STORY");
 
-            intent.setDataAndType(backgroundAssetUri, "JPEG");
-            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                intent.setDataAndType(backgroundAssetUri, "JPEG");
+                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
-            // Instantiate activity and verify it will resolve implicit intent
-            Activity activity = SharedBigImage.this;
-            if (activity.getPackageManager().resolveActivity(intent, 0) != null) {
-                activity.startActivityForResult(intent, 0);
+                // Instantiate activity and verify it will resolve implicit intent
+                Activity activity = SharedBigImage.this;
+                if (activity.getPackageManager().resolveActivity(intent, 0) != null) {
+                    activity.startActivityForResult(intent, 0);
+                }
+                Intent intent2 = new Intent(getApplicationContext(), Namecard.class);
+                startActivity(intent2);
             }
-
-            Intent intent2 = new Intent(getApplicationContext(), Namecard.class);
-            startActivity(intent2);
-        }
-    });
-
+        });
     }
 
     public static int findByString(Context context, String resourceName, String type) {
