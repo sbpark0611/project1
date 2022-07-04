@@ -114,12 +114,9 @@ public class phonebook extends AppCompatActivity {
 
                 received_jsonObject.put("name", received_name);
                 received_jsonObject.put("phonenumber", received_phonenumber);
+                received_jsonObject.put("explanation", received_explanation);
 
-                SharedPreferences.Editor editor3 = sharedPreferences.edit();
-                editor3.putString(adapter.getItemCount() + "explanation", received_explanation);
-                editor3.commit();
-
-                if(received_name != null && received_phonenumber != null){
+                if(received_name != null && received_phonenumber != null && received_explanation != null){
                     adapter.setArrayData(received_jsonObject, getResources().getDrawable(R.drawable.ic_baseline_account_box_24));
 
                     arr.put(received_jsonObject);

@@ -13,11 +13,13 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     public ImageView imageview;
     public TextView text_name;
     public TextView text_phonenumber;
+    public TextView text_explanation;
 
     public ViewHolder(Context context, View itemView) {
         super(itemView);
         imageview = itemView.findViewById(R.id.imageView);
         text_name = itemView.findViewById(R.id.text_name);
         text_phonenumber = itemView.findViewById(R.id.text_phonenumber);
+        text_explanation = itemView.findViewById(R.id.text_explanation);
     }
 }

@@ -61,6 +61,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
                 Intent intent = new Intent(v.getContext(), DetailedPhonebook.class);
                 intent.putExtra("name", holder.text_name.getText());
                 intent.putExtra("phonenumber", holder.text_phonenumber.getText());
+                intent.putExtra("explanation", holder.text_explanation.getText());
                 intent.putExtra("profilenumber", Integer.toString(holder.getAdapterPosition()));
                 context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
             }
@@ -71,6 +72,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
                 Intent intent = new Intent(v.getContext(), DetailedPhonebook.class);
                 intent.putExtra("name", holder.text_name.getText());
                 intent.putExtra("phonenumber", holder.text_phonenumber.getText());
+                intent.putExtra("explanation", holder.text_explanation.getText());
                 intent.putExtra("profilenumber", Integer.toString(holder.getAdapterPosition()));
                 context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
             }
@@ -81,6 +83,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
                 Intent intent = new Intent(v.getContext(), DetailedPhonebook.class);
                 intent.putExtra("name", holder.text_name.getText());
                 intent.putExtra("phonenumber", holder.text_phonenumber.getText());
+                intent.putExtra("explanation", holder.text_explanation.getText());
                 intent.putExtra("profilenumber", Integer.toString(holder.getAdapterPosition()));
                 context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
             }

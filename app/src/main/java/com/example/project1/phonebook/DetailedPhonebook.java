@@ -53,16 +53,6 @@ public class DetailedPhonebook extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("phonenumbers",MODE_PRIVATE);
 
-        if(received_explanation != null) {
-            detailed_text_detail.setText(received_explanation);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(received_profilenumber + "explanation", received_explanation);
-            editor.commit();
-        }
-        else {
-            detailed_text_detail.setText(sharedPreferences.getString(received_profilenumber + "explanation", null));
-        }
-
         String savedProfileImage = sharedPreferences.getString(received_profilenumber,null);
         if(received_drawable_number != null){
             detailed_profile_image.setImageDrawable(getResources().getDrawable(findByString(getApplicationContext(), "pic_"+received_drawable_number, "drawable")));
@@ -86,6 +76,7 @@ public class DetailedPhonebook extends AppCompatActivity {
                     else{
                         jsonobj.put("name", received_name);
                         jsonobj.put("phonenumber", received_phonenumber);
+                        jsonobj.put("explanation", received_explanation);
                         newJsonArray.put(jsonobj);
                     }
                 }
@@ -183,7 +174,7 @@ public class DetailedPhonebook extends AppCompatActivity {
                 intent.putExtra("drawable_number", savedProfileImage);
                 intent.putExtra("name", received_name);
                 intent.putExtra("phonenumber", received_phonenumber);
-                intent.putExtra("explanation", sharedPreferences.getString(received_profilenumber + "explanation", null));
+                intent.putExtra("explanation", received_explanation);
                 intent.putExtra("profilenumber", received_profilenumber);
                 startActivity(intent);
             }
