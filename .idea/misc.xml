@@ -3,29 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/drawable-v24/gridview_selector.xml" value="0.1" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/drawable/edge.xml" value="0.2585" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/drawable/ic_baseline_looks_3_24.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.1" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/drawable/menu_selector_color.xml" value="0.1245" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/drawable/selector.xml" value="0.1265" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_about.xml" value="0.2" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_add_phonenumber.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_big_image.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_combine_image.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_detailed_phonebook.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_edit_detail.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_gallery.xml" value="0.2" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_image_selection.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_name_selection.xml" value="0.22552083333333334" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_namecard.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_phone_gallery.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_phonebook.xml" value="0.2" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_profile_selection.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_shared_big_image.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/activity_uri_big_image.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/contacts_list_item.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/fragment_gallary.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/fragment_phonebook.xml" value="0.22135416666666666" />
@@ -34,8 +23,6 @@
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/imagepanel.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/itempanel.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/list.xml" value="0.20677083333333332" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/menu_selector_color.xml" value="0.1" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/layout/namecardpanel.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/menu/menu_navigation.xml" value="0.15185185185185185" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/project1/app/src/main/res/menu/menubar.xml" value="0.4" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2985" />
@@ -57,13 +44,14 @@
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/activity_gallery.xml" value="0.358695652173913" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/activity_name_selection.xml" value="0.26927083333333335" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/activity_namecard.xml" value="0.25" />
+        <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/activity_phone_gallery.xml" value="0.19927536231884058" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/activity_phonebook.xml" value="0.22" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/activity_profile_selection.xml" value="0.2520833333333333" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/activity_shared_big_image.xml" value="0.25" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/grid_layout.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/imagepanel.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/itempanel.xml" value="0.2" />
-        <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/namecardpanel.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/namecardpanel.xml" value="0.1" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.198" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.198" />
       </map>

@@ -2,53 +2,55 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="350dp"
+    android:layout_width="match_parent"
     android:layout_height="350dp"
     android:layout_gravity="center_horizontal"
     >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:ignore="MissingConstraints">
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_view"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
-            app:cardCornerRadius="70dp"
-            app:cardUseCompatPadding="true"
-            >
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        app:cardCornerRadius="70dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_gravity="center"
+        >
 
-            <ImageView
-                android:id="@+id/Namecard_Image"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_add_box_24" />
+        <ImageView
+            android:id="@+id/Namecard_Image"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_alignStart="@+id/card_view"
+            android:layout_alignTop="@+id/card_view"
+            android:layout_alignEnd="@+id/card_view"
+            android:layout_alignBottom="@+id/card_view"
+            android:gravity="center"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/card_view"
+            app:layout_constraintEnd_toEndOf="@+id/card_view"
+            app:layout_constraintStart_toStartOf="@+id/card_view"
+            app:layout_constraintTop_toTopOf="@+id/card_view"
+            app:srcCompat="@drawable/ic_baseline_add_box_24" />
 
-            <TextView
-                android:id="@+id/Namecard_Text"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                android:layout_alignStart="@+id/Namecard_Image"
-                android:layout_alignTop="@+id/Namecard_Image"
-                android:layout_alignEnd="@+id/Namecard_Image"
-                android:layout_alignBottom="@+id/Namecard_Image"
-                android:gravity="center"
-                android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="@+id/Namecard_Image"
-                app:layout_constraintEnd_toEndOf="@+id/Namecard_Image"
-                app:layout_constraintStart_toStartOf="@+id/Namecard_Image"
-                app:layout_constraintTop_toTopOf="@+id/Namecard_Image"
-                tools:ignore="MissingConstraints" />
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
-
-
-
+        <TextView
+            android:id="@+id/Namecard_Text"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_alignStart="@+id/Namecard_Image"
+            android:layout_alignTop="@+id/Namecard_Image"
+            android:layout_alignEnd="@+id/Namecard_Image"
+            android:layout_alignBottom="@+id/Namecard_Image"
+            android:gravity="center"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/Namecard_Image"
+            app:layout_constraintEnd_toEndOf="@+id/Namecard_Image"
+            app:layout_constraintStart_toStartOf="@+id/Namecard_Image"
+            app:layout_constraintTop_toTopOf="@+id/Namecard_Image"
+            tools:ignore="MissingConstraints" />
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
