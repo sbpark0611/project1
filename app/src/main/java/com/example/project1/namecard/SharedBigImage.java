@@ -152,7 +152,8 @@ public class SharedBigImage extends AppCompatActivity {
         try {
             String imgFile = "save"+Integer.toString(number)+".jpg"; // 저장파일명
 
-            StringBuffer imgPath = new StringBuffer("sdcard/Download/"); // 저장경로
+            String root = Environment.getExternalStorageDirectory().toString();
+            StringBuffer imgPath = new StringBuffer(root + "/Download/"); // 저장경로
             saveFile = new File(imgPath.toString());
 
             if (!saveFile.isDirectory()) {

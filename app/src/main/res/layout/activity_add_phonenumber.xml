@@ -13,6 +13,7 @@
         android:scaleX="4"
         android:scaleY="4"
         android:text="전화번호 추가"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
