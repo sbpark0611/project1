@@ -66,7 +66,7 @@ public class gallery extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
 
-        onWindowFocusChanged(true);
+//        onWindowFocusChanged(true);
 
         recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
         DividerItemDecoration dividerItemDecoration =   new DividerItemDecoration(recyclerView.getContext(),new LinearLayoutManager(this).getOrientation());
@@ -123,19 +123,22 @@ public class gallery extends AppCompatActivity {
         return context.getResources().getIdentifier(resourceName, type, context.getPackageName());
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
-            applyColors();
-        }
-    }
-
-    // Apply the title/navigation bar color
-    public void applyColors() {
-        getWindow().setStatusBarColor(Color.parseColor("blue"));
-        getWindow().setNavigationBarColor(Color.parseColor("white"));
-    }
+//    @Override
+//    public void onWindowFocusChanged(boolean hasFocus) {
+//        super.onWindowFocusChanged(hasFocus);
+//        if (hasFocus) {
+//            applyColors();
+//        }
+//    }
+//
+//    // Apply the title/navigation bar color
+//    public void applyColors() {
+//        getWindow().setStatusBarColor(Color.parseColor("blue"));
+//        getWindow().setNavigationBarColor(Color.parseColor("black"));
+//        //색상 투명
+//        getWindow().setStatusBarColor(Color.TRANSPARENT);
+//        getWindow().setNavigationBarColor(Color.TRANSPARENT);
+//    }
 
 }
 
