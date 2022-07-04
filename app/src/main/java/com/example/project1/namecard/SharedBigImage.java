@@ -4,11 +4,17 @@ import static java.lang.System.out;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,13 +24,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.project1.R;
 import com.example.project1.gallery.gallery;
 import com.example.project1.phonebook.DetailedPhonebook;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class SharedBigImage extends AppCompatActivity {
     ImageView bigImage;
@@ -49,7 +58,7 @@ public class SharedBigImage extends AppCompatActivity {
         String x = getIntent.getStringExtra("x");
         String y = getIntent.getStringExtra("y");
 
-        bigImage.setImageDrawable(getResources().getDrawable(findByString(getApplicationContext(),"pic_" + drawablenumber,"drawable")));
+        bigImage.setImageDrawable(getResources().getDrawable(findByString(getApplicationContext(), "pic_" + drawablenumber, "drawable")));
         sharedText.setText(string);
         sharedText.setTextSize(Integer.parseInt(size));
         sharedText.setTranslationX(Float.parseFloat(x));
@@ -65,19 +74,19 @@ public class SharedBigImage extends AppCompatActivity {
 
         imageLayout = (ConstraintLayout) findViewById(R.id.image_layout);
         saveButton = (Button) findViewById(R.id.savebutton);
-        saveButton.setOnClickListener(new View.OnClickListener(){
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
 
-//                imageLayout.setDrawingCacheEnabled(true);
-//                Bitmap bm = imageLayout.getDrawingCache();
-//
-//                try {
-//                    onCap(bm);
-//                } catch (Exception e) {
-//                } finally {
-//                    bm.recycle();
-//                }
+                imageLayout.setDrawingCacheEnabled(true);
+                Bitmap bm = imageLayout.getDrawingCache();
+
+                try {
+                    onCap(bm);
+                } catch (Exception e) {
+                } finally {
+                    bm.recycle();
+                }
 
                 Intent intent = new Intent(getApplicationContext(), Namecard.class);
                 startActivity(intent);
@@ -85,13 +94,16 @@ public class SharedBigImage extends AppCompatActivity {
         });
 
         shareButton = (Button) findViewById(R.id.sharebutton);
-        shareButton.setOnClickListener(new View.OnClickListener(){
+        shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), Namecard.class);
-                startActivity(intent);
-            }
-        });
+        public void onClick(View v) {
+            imageLayout.setDrawingCacheEnabled(true);
+            Bitmap bm = imageLayout.getDrawingCache();
+
+            Intent intent = new Intent(getApplicationContext(), Namecard.class);
+            startActivity(intent);
+        }
+    });
 
     }
 
@@ -100,29 +112,30 @@ public class SharedBigImage extends AppCompatActivity {
         return context.getResources().getIdentifier(resourceName, type, context.getPackageName());
     }
 
-//    private void onCap(Bitmap bm) throws Exception {
-//        File saveFile;
-//
-//        try {
-//            String imgFile = "save.jpg"; // 저장파일명
-//
-//            StringBuffer imgPath = new StringBuffer("sdcard/Download/"); // 저장경로
-//            saveFile = new File(imgPath.toString());
-//
-//            if(!saveFile.isDirectory()) {
-//                saveFile.mkdirs();
-//            }
-//            imgPath.append(imgFile);
-//            out = new FileOutputStream(imgPath.toString()); // 저장경로 + 파일명
-//            bm.compress(Bitmap.CompressFormat.JPEG, 100, out);
-//            sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + Environment.getExternalStorageDirectory())));
-//        } catch (Exception e) {
-//
-//        } finally {
-//            if (out != null) {
-//                out.close();
-//            }
-//            saveFile = null;
-//        }
-//    }
+    private void onCap(Bitmap bm) throws Exception {
+        File saveFile;
+        FileOutputStream out = null;
+
+        try {
+            String imgFile = "save.jpg"; // 저장파일명
+
+            StringBuffer imgPath = new StringBuffer("sdcard/Download/"); // 저장경로
+            saveFile = new File(imgPath.toString());
+
+            if (!saveFile.isDirectory()) {
+                saveFile.mkdirs();
+            }
+            imgPath.append(imgFile);
+            out = new FileOutputStream(imgPath.toString()); // 저장경로 + 파일명
+            bm.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + Environment.getExternalStorageDirectory())));
+        } catch (Exception e) {
+
+        } finally {
+            if (out != null) {
+                out.close();
+            }
+            saveFile = null;
+        }
+    }
 }
