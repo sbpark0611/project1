@@ -134,8 +134,6 @@ public class SharedBigImage extends AppCompatActivity {
 
                 startActivity(intent);
 
-                Intent intent2 = new Intent(getApplicationContext(), Namecard.class);
-                startActivity(intent2);
             }
         });
     }
