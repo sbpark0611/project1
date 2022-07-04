@@ -29,6 +29,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.stream.StreamSupport;
 
 public class NameSelection extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -48,7 +49,8 @@ public class NameSelection extends AppCompatActivity {
         goButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), SharedBigImage.class);
+                Intent intent = new Intent(getApplicationContext(), combineImage.class);
+                System.out.println(inputText.getText().toString());
                 intent.putExtra("inputtext", inputText.getText().toString());
                 startActivity(intent);
             }

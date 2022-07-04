@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +20,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +33,7 @@ import com.example.project1.R;
 import com.example.project1.gallery.gallery;
 import com.example.project1.phonebook.DetailedPhonebook;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -101,8 +104,24 @@ public class SharedBigImage extends AppCompatActivity {
             imageLayout.setDrawingCacheEnabled(true);
             Bitmap bm = imageLayout.getDrawingCache();
 
-            Intent intent = new Intent(getApplicationContext(), Namecard.class);
-            startActivity(intent);
+            // Define image asset URI
+            Uri backgroundAssetUri = getImageUri(getApplicationContext(), bm);
+            String sourceApplication = "com.my.app";
+
+            // Instantiate implicit intent with ADD_TO_STORY action and background asset
+            Intent intent = new Intent("com.instagram.share.ADD_TO_STORY");
+
+            intent.setDataAndType(backgroundAssetUri, "JPEG");
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+//            // Instantiate activity and verify it will resolve implicit intent
+//            Activity activity = SharedBigImage.class;
+//            if (activity.getPackageManager().resolveActivity(intent, 0) != null) {
+//                activity.startActivityForResult(intent, 0);
+//            }
+
+            Intent intent2 = new Intent(getApplicationContext(), Namecard.class);
+            startActivity(intent2);
         }
     });
 
@@ -121,10 +140,7 @@ public class SharedBigImage extends AppCompatActivity {
             String imgFile = "save.jpg"; // 저장파일명
 
             String root = Environment.getExternalStorageDirectory().toString();
-            Log.d("root", root);
-            File myDir = new File(root + "/Pictures");
-
-            StringBuffer imgPath = new StringBuffer("sdcard/Download/"); // 저장경로
+            StringBuffer imgPath = new StringBuffer(root + "/Pictures"); // 저장경로
             saveFile = new File(imgPath.toString());
 
             if (!saveFile.isDirectory()) {
@@ -142,5 +158,12 @@ public class SharedBigImage extends AppCompatActivity {
             }
             saveFile = null;
         }
+    }
+
+    private Uri getImageUri(Context context, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
 }
