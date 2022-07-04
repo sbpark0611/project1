@@ -9,30 +9,19 @@
 
     <TextView
         android:id="@+id/selectText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="78dp"
         android:layout_above="@+id/combine_button"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="-1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="65dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="70dp"
+        android:background="#11000000"
         android:gravity="center_horizontal"
         android:text="Select the Name and Phone Number"
         android:textSize="30sp"
         android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/selectImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_above="@+id/bottom_navigation"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="154dp"
-        android:layout_marginEnd="156dp"
-        android:layout_marginBottom="255dp"
-        app:srcCompat="@drawable/ic_baseline_image_24" />
 
     <ImageButton
         android:id="@+id/combine_button"
@@ -41,11 +30,30 @@
         android:layout_above="@+id/selectImage"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="148dp"
-        android:layout_marginEnd="152dp"
-        android:layout_marginBottom="57dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginBottom="70dp"
+        android:background="#00000000"
         app:srcCompat="@drawable/ic_baseline_add_box_24"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/selectImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/bottom_navigation"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="150dp"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        app:srcCompat="@drawable/ic_baseline_image_24" />
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

@@ -69,8 +69,8 @@ public class gallery extends AppCompatActivity {
 //        onWindowFocusChanged(true);
 
         recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
-        DividerItemDecoration dividerItemDecoration =   new DividerItemDecoration(recyclerView.getContext(),new LinearLayoutManager(this).getOrientation());
-        recyclerView.addItemDecoration(dividerItemDecoration);
+//        DividerItemDecoration dividerItemDecoration =   new DividerItemDecoration(recyclerView.getContext(),new LinearLayoutManager(this).getOrientation());
+//        recyclerView.addItemDecoration(dividerItemDecoration);
 
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         adapter = new ImageAdapter(getApplicationContext());
