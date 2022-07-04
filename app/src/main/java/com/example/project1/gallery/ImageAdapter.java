@@ -48,7 +48,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
 
         holder.imageview.setImageDrawable(drawable);
 
-        holder.imageview.setOnClickListener(new View.OnClickListener() {
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(v.getContext(), holder.getAdapterPosition()+"번 눌림", Toast.LENGTH_SHORT).show();
