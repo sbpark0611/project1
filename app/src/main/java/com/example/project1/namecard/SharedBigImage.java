@@ -1,5 +1,6 @@
 package com.example.project1.namecard;
 
+import static com.example.project1.MainActivity.namecardnumber;
 import static java.lang.System.out;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -46,8 +48,6 @@ public class SharedBigImage extends AppCompatActivity {
     Button saveButton;
     Button shareButton;
     ConstraintLayout imageLayout;
-
-    public static int namecardnumber = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +91,10 @@ public class SharedBigImage extends AppCompatActivity {
                 try {
                     onCap(bm, namecardnumber);
                     namecardnumber += 1;
+                    SharedPreferences drawableSharedPreferences = getSharedPreferences("namecardnumber",MODE_PRIVATE);
+                    SharedPreferences.Editor drawableEditor = drawableSharedPreferences.edit();
+                    drawableEditor.putString("namecardnumber", Integer.toString(namecardnumber));
+                    drawableEditor.commit();
                 } catch (Exception e) {
                 } finally {
                     bm.recycle();

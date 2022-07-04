@@ -10,11 +10,12 @@ import android.view.MenuItem;
 
 import com.example.project1.gallery.gallery;
 import com.example.project1.namecard.Namecard;
-import com.example.project1.namecard.about;
 import com.example.project1.phonebook.phonebook;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static int namecardnumber = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
         drawableEditor.putString("drawable_number", null);
         drawableEditor.commit();
 
-//
-//        // Set Home selected
-//        bottomNavigationView.setSelectedItemId(R.id.home);
+        SharedPreferences namecardSharedPreference = getSharedPreferences("namecardnumber",MODE_PRIVATE);
+        int namecardNum = Integer.parseInt(namecardSharedPreference.getString("namecardnumber", "0"));
+        if(namecardNum != 0) namecardnumber = namecardNum;
 
         // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
