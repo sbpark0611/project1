@@ -114,11 +114,11 @@ public class SharedBigImage extends AppCompatActivity {
             intent.setDataAndType(backgroundAssetUri, "JPEG");
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
-//            // Instantiate activity and verify it will resolve implicit intent
-//            Activity activity = SharedBigImage.class;
-//            if (activity.getPackageManager().resolveActivity(intent, 0) != null) {
-//                activity.startActivityForResult(intent, 0);
-//            }
+            // Instantiate activity and verify it will resolve implicit intent
+            Activity activity = SharedBigImage.this;
+            if (activity.getPackageManager().resolveActivity(intent, 0) != null) {
+                activity.startActivityForResult(intent, 0);
+            }
 
             Intent intent2 = new Intent(getApplicationContext(), Namecard.class);
             startActivity(intent2);
