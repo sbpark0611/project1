@@ -58,7 +58,7 @@ public class gallery extends AppCompatActivity {
     RecyclerView recyclerView;
     ImageAdapter adapter;
     ImageButton imageButton;
-    int imagenum = 20;
+    int imagenum = 21;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
