@@ -3,6 +3,7 @@ package com.example.project1.namecard;
 import static java.lang.System.out;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.core.motion.utils.Utils;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -119,6 +120,7 @@ public class SharedBigImage extends AppCompatActivity {
                 if (activity.getPackageManager().resolveActivity(intent, 0) != null) {
                     activity.startActivityForResult(intent, 0);
                 }
+
                 Intent intent2 = new Intent(getApplicationContext(), Namecard.class);
                 startActivity(intent2);
             }
@@ -164,4 +166,5 @@ public class SharedBigImage extends AppCompatActivity {
         String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, "Title", null);
         return Uri.parse(path);
     }
+
 }
