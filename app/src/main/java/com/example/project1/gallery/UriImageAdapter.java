@@ -3,6 +3,8 @@ package com.example.project1.gallery;
 import static android.content.Context.MODE_PRIVATE;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
+import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -59,12 +61,21 @@ public class UriImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
 
                 Intent intent = new Intent(v.getContext(), UriBigImage.class);
                 intent.putExtra("position",position);
-
                 gallerycontext.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
 
             }
         });
+        holder.imageview.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
 
+                Intent intent = new Intent(v.getContext(), PhoneGallery.class);
+                intent.putExtra("position",position);
+                intent.putExtra("delete", true);
+                gallerycontext.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
+                    return true;
+            }
+        });
     }
 
     public static int findByString(Context context, String resourceName, String type) {
