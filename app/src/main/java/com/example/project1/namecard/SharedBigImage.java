@@ -19,6 +19,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -118,6 +119,10 @@ public class SharedBigImage extends AppCompatActivity {
 
         try {
             String imgFile = "save.jpg"; // 저장파일명
+
+            String root = Environment.getExternalStorageDirectory().toString();
+            Log.d("root", root);
+            File myDir = new File(root + "/Pictures");
 
             StringBuffer imgPath = new StringBuffer("sdcard/Download/"); // 저장경로
             saveFile = new File(imgPath.toString());
