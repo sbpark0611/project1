@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,6 +21,9 @@ import com.example.project1.R;
 import com.example.project1.gallery.gallery;
 import com.example.project1.phonebook.phonebook;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -51,7 +56,6 @@ public class Namecard extends AppCompatActivity {
         //about -> combineImage -> Namecard 통해서 보내온 file 저장.
         Intent getNameCardIntent = getIntent();
         if(getNameCardIntent.getStringExtra("ImageNum")!=null) {
-
             received_image.add(getNameCardIntent.getStringExtra("ImageNum"));
             received_text.add(getNameCardIntent.getStringExtra("text"));
             received_X.add(getNameCardIntent.getFloatExtra("TransX", 0));
@@ -80,12 +84,9 @@ public class Namecard extends AppCompatActivity {
                 adapter.setTransYArrayList(received_Y.get(i-1));
                 adapter.setCapsArrayList(received_caps.get(i-1));
             }
-
             recyclerView.setAdapter(adapter);
         }
         else{
-
-
         }
 
         // Initialize and assign variable
@@ -120,6 +121,39 @@ public class Namecard extends AppCompatActivity {
     }
     public static int findByString(Context context, String resourceName, String type) {
         return context.getResources().getIdentifier(resourceName, type, context.getPackageName());
+    }
+
+    private void setStringArrayPref(Context context, String key, ArrayList<String> values) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        JSONArray a = new JSONArray();
+        for (int i = 0; i < values.size(); i++) {
+            a.put(values.get(i));
+        }
+        if (!values.isEmpty()) {
+            editor.putString(key, a.toString());
+        } else {
+            editor.putString(key, null);
+        }
+        editor.apply();
+    }
+
+    private ArrayList<String> getStringArrayPref(Context context, String key) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        String json = prefs.getString(key, null);
+        ArrayList<String> urls = new ArrayList<String>();
+        if (json != null) {
+            try {
+                JSONArray a = new JSONArray(json);
+                for (int i = 0; i < a.length(); i++) {
+                    String url = a.optString(i);
+                    urls.add(url);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return urls;
     }
 
 }
