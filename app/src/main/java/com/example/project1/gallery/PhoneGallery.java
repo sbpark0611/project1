@@ -41,6 +41,16 @@ public class PhoneGallery extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_gallery);
 
+        Intent intent = getIntent();
+        boolean delete = intent.getBooleanExtra("delete", false);
+
+        if(delete){
+            int idx = intent.getIntExtra("position",-1);
+            if(idx != -1){
+                uriList.remove(idx);
+            }
+        }
+
         if(uriList.size()>0){
             recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
             adapter = new UriImageAdapter(uriList,getApplicationContext());

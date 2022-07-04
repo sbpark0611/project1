@@ -70,7 +70,7 @@ public class about extends AppCompatActivity {
             currentPhonenumberText = "";
         }
         else if(received_name != null && received_phonenumber != null){
-            selectText.setText(received_name+ " "+ received_phonenumber);
+            selectText.setText(received_name+ "\n"+ received_phonenumber);
 
             SharedPreferences.Editor textEditor = textSharedPreferences.edit();
             textEditor.putString("name", received_name);
@@ -82,7 +82,7 @@ public class about extends AppCompatActivity {
         }
         //이름이 선택은 안 되었는 데, 이미 기존에 선택 된 것이 있을 때
         else if(savedNameTextData != null && savedPhonenumberTextData != null){
-            selectText.setText(savedNameTextData + " " + savedPhonenumberTextData);
+            selectText.setText(savedNameTextData + "\n" + savedPhonenumberTextData);
 
             currentNameText = savedNameTextData;
             currentPhonenumberText = savedPhonenumberTextData;

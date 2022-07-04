@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/text_layout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
         android:orientation="vertical">
 
         <TextView
@@ -22,15 +22,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/input_text"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="10"
+                android:layout_weight="15"
                 android:minHeight="48dp"
                 android:hint="원하는 텍스트를 입력하세요" />
 
@@ -38,9 +39,10 @@
                 android:id="@+id/go_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="go" />
+                android:background="#00000000"
+                android:drawableBottom="@drawable/ic_baseline_keyboard_arrow_right_24" />
         </LinearLayout>
 
     </LinearLayout>
@@ -49,8 +51,8 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/text_layout"
-        android:layout_above="@id/bottom_navigation" />
+        android:layout_above="@id/bottom_navigation"
+        android:layout_below="@id/text_layout" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
