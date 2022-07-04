@@ -10,11 +10,11 @@
 
     <ImageView
         android:id="@+id/imagepanel_imageview"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:layout_weight="1"
+        android:background="@drawable/edge"
         app:srcCompat="@drawable/ic_baseline_account_box_24"
-        tools:srcCompat="@drawable/ic_baseline_account_box_24"
-        android:background="@drawable/edge"/>
+        tools:srcCompat="@drawable/ic_baseline_account_box_24" />
 
 </LinearLayout>
