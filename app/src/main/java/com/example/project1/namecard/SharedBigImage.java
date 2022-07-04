@@ -105,24 +105,30 @@ public class SharedBigImage extends AppCompatActivity {
                 imageLayout.setDrawingCacheEnabled(true);
                 Bitmap bm = imageLayout.getDrawingCache();
 
-                // Define image asset URI
-                Uri backgroundAssetUri = getImageUri(getApplicationContext(), bm);
-                String sourceApplication = "com.my.app";
+                Uri bgUri = getImageUri(getApplicationContext(), bm);
+                String sourceApplication = "com.khs.instagramshareexampleproject";
 
-                // Instantiate implicit intent with ADD_TO_STORY action and background asset
+// Instantiate implicit intent with ADD_TO_STORY action,
+// sticker asset, and background colors
                 Intent intent = new Intent("com.instagram.share.ADD_TO_STORY");
+                intent.putExtra("source_application", sourceApplication);
 
-                intent.setDataAndType(backgroundAssetUri, "JPEG");
-                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                intent.setType("image/png");
+                intent.setDataAndType(bgUri, "image/png");
 
-                // Instantiate activity and verify it will resolve implicit intent
-                Activity activity = SharedBigImage.this;
-                if (activity.getPackageManager().resolveActivity(intent, 0) != null) {
-                    activity.startActivityForResult(intent, 0);
-                }
+// Instantiate activity and verify it will resolve implicit intent
+                grantUriPermission(
+                        "com.instagram.android", null, Intent.FLAG_GRANT_READ_URI_PERMISSION
+                );
 
-                Intent intent2 = new Intent(getApplicationContext(), Namecard.class);
-                startActivity(intent2);
+                grantUriPermission(
+                        "com.instagram.android", bgUri, Intent.FLAG_GRANT_READ_URI_PERMISSION
+                );
+
+                startActivity(intent);
+
+//                Intent intent2 = new Intent(getApplicationContext(), Namecard.class);
+//                startActivity(intent2);
             }
         });
     }
