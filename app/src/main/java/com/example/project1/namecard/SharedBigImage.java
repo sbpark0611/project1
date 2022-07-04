@@ -47,6 +47,8 @@ public class SharedBigImage extends AppCompatActivity {
     Button shareButton;
     ConstraintLayout imageLayout;
 
+    public static int namecardnumber = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +89,8 @@ public class SharedBigImage extends AppCompatActivity {
                 Bitmap bm = imageLayout.getDrawingCache();
 
                 try {
-                    onCap(bm);
+                    onCap(bm, namecardnumber);
+                    namecardnumber += 1;
                 } catch (Exception e) {
                 } finally {
                     bm.recycle();
@@ -108,15 +111,15 @@ public class SharedBigImage extends AppCompatActivity {
                 Uri bgUri = getImageUri(getApplicationContext(), bm);
                 String sourceApplication = "com.khs.instagramshareexampleproject";
 
-// Instantiate implicit intent with ADD_TO_STORY action,
-// sticker asset, and background colors
+                // Instantiate implicit intent with ADD_TO_STORY action,
+                // sticker asset, and background colors
                 Intent intent = new Intent("com.instagram.share.ADD_TO_STORY");
                 intent.putExtra("source_application", sourceApplication);
 
                 intent.setType("image/png");
                 intent.setDataAndType(bgUri, "image/png");
 
-// Instantiate activity and verify it will resolve implicit intent
+                // Instantiate activity and verify it will resolve implicit intent
                 grantUriPermission(
                         "com.instagram.android", null, Intent.FLAG_GRANT_READ_URI_PERMISSION
                 );
@@ -127,8 +130,8 @@ public class SharedBigImage extends AppCompatActivity {
 
                 startActivity(intent);
 
-//                Intent intent2 = new Intent(getApplicationContext(), Namecard.class);
-//                startActivity(intent2);
+                Intent intent2 = new Intent(getApplicationContext(), Namecard.class);
+                startActivity(intent2);
             }
         });
     }
@@ -138,15 +141,14 @@ public class SharedBigImage extends AppCompatActivity {
         return context.getResources().getIdentifier(resourceName, type, context.getPackageName());
     }
 
-    private void onCap(Bitmap bm) throws Exception {
+    private void onCap(Bitmap bm, int number) throws Exception {
         File saveFile;
         FileOutputStream out = null;
 
         try {
-            String imgFile = "save.jpg"; // 저장파일명
+            String imgFile = "save"+Integer.toString(number)+".jpg"; // 저장파일명
 
-            String root = Environment.getExternalStorageDirectory().toString();
-            StringBuffer imgPath = new StringBuffer(root + "/Pictures"); // 저장경로
+            StringBuffer imgPath = new StringBuffer("sdcard/Download/"); // 저장경로
             saveFile = new File(imgPath.toString());
 
             if (!saveFile.isDirectory()) {
