@@ -86,12 +86,26 @@ public class combineImage extends AppCompatActivity {
                 combinedText.setTranslationY(combinedText.getTranslationY()-10);
             }
         });
+        upButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                combinedText.setTranslationY(combinedText.getTranslationY()-150);
+                return true;
+            }
+        });
         ImageButton downButton = (ImageButton) findViewById(R.id.downButton);
         downButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 combinedText.setTranslationY(combinedText.getTranslationY()+10);
 
+            }
+        });
+        downButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                combinedText.setTranslationY(combinedText.getTranslationY()+150);
+                return true;
             }
         });
         ImageButton rightButton = (ImageButton) findViewById(R.id.rightButton);
@@ -101,12 +115,26 @@ public class combineImage extends AppCompatActivity {
                 combinedText.setTranslationX(combinedText.getTranslationX()+10);
             }
         });
+        rightButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                combinedText.setTranslationX(combinedText.getTranslationX()+150);
+                return true;
+            }
+        });
         ImageButton leftButton = (ImageButton) findViewById(R.id.leftButton);
         leftButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 combinedText.setTranslationX(combinedText.getTranslationX()-10);
 
+            }
+        });
+        leftButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                combinedText.setTranslationX(combinedText.getTranslationX()-150);
+                return true;
             }
         });
 
