@@ -31,6 +31,7 @@ public class Namecard extends AppCompatActivity {
     static ArrayList<Integer> received_size= new ArrayList<>();
     static ArrayList<Float> received_X= new ArrayList<>();
     static ArrayList<Float> received_Y= new ArrayList<>();
+    static ArrayList<Boolean> received_caps = new ArrayList<>();
 
     public static int numofarray = 0;
 
@@ -56,6 +57,7 @@ public class Namecard extends AppCompatActivity {
             received_X.add(getNameCardIntent.getFloatExtra("TransX", 0));
             received_Y.add(getNameCardIntent.getFloatExtra("TransY", 0));
             received_size.add(getNameCardIntent.getIntExtra("TextSize", 10));
+            received_caps.add(getNameCardIntent.getBooleanExtra("Caps",false));
         }
         if(numofarray!=0){
             recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -76,9 +78,13 @@ public class Namecard extends AppCompatActivity {
                 adapter.setFontSizeArrayList(received_size.get(i-1));
                 adapter.setTransXArrayList(received_X.get(i-1));
                 adapter.setTransYArrayList(received_Y.get(i-1));
+                adapter.setCapsArrayList(received_caps.get(i-1));
             }
 
             recyclerView.setAdapter(adapter);
+        }
+        else{
+
 
         }
 

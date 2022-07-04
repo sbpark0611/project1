@@ -65,6 +65,7 @@ public class combineImage extends AppCompatActivity {
 
         //text 저장 하는 부분
         combinedText.setText(received_name+ "\n"+ received_phonenumber);
+        combinedText.setTextSize(Dimension.SP,fontSize);
 
         //sharedPreference로 텍스트 저장하는 부분
         SharedPreferences textSharedPreferences = getSharedPreferences("about_phonenumber",MODE_PRIVATE);
@@ -160,6 +161,7 @@ public class combineImage extends AppCompatActivity {
                 intent.putExtra("TextSize", fontSize);
                 intent.putExtra("TransX", combinedText.getTranslationX());
                 intent.putExtra("TransY", combinedText.getTranslationY());
+                intent.putExtra("Caps",setAllCaps);
                 startActivity(intent);
 
             }

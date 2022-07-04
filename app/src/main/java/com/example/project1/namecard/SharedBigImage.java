@@ -64,12 +64,14 @@ public class SharedBigImage extends AppCompatActivity {
         String size = getIntent.getStringExtra("size");
         String x = getIntent.getStringExtra("x");
         String y = getIntent.getStringExtra("y");
+        String caps = getIntent.getStringExtra("caps");
 
         bigImage.setImageDrawable(getResources().getDrawable(findByString(getApplicationContext(), "pic_" + drawablenumber, "drawable")));
         sharedText.setText(string);
         sharedText.setTextSize(Integer.parseInt(size));
         sharedText.setTranslationX(Float.parseFloat(x));
         sharedText.setTranslationY(Float.parseFloat(y));
+        sharedText.setAllCaps(Boolean.parseBoolean(caps));
 
         bigImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,24 +86,27 @@ public class SharedBigImage extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 imageLayout.setDrawingCacheEnabled(true);
                 Bitmap bm = imageLayout.getDrawingCache();
+                Uri bgUri = getImageUri(getApplicationContext(), bm);
+                String sourceApplication = "com.khs.instagramshareexampleproject";
 
-                try {
-                    onCap(bm, namecardnumber);
-                    namecardnumber += 1;
-                    SharedPreferences drawableSharedPreferences = getSharedPreferences("namecardnumber",MODE_PRIVATE);
-                    SharedPreferences.Editor drawableEditor = drawableSharedPreferences.edit();
-                    drawableEditor.putString("namecardnumber", Integer.toString(namecardnumber));
-                    drawableEditor.commit();
-                } catch (Exception e) {
-                } finally {
-                    bm.recycle();
-                }
+                // Instantiate implicit intent with ADD_TO_STORY action,
+                // sticker asset, and background colors
+                Intent intent = new Intent("com.instagram.share.ADD_TO_STORY");
+                intent.putExtra("source_application", sourceApplication);
+                intent.setType("image/png");
+                intent.setDataAndType(bgUri, "image/png");
 
-                Intent intent = new Intent(getApplicationContext(), Namecard.class);
-                startActivity(intent);
+                // Instantiate activity and verify it will resolve implicit intent
+                grantUriPermission(
+                        "com.instagram.android", null, Intent.FLAG_GRANT_READ_URI_PERMISSION
+                );
+                grantUriPermission(
+                        "com.instagram.android", bgUri, Intent.FLAG_GRANT_READ_URI_PERMISSION
+                );
+                Intent moveIntent = new Intent(getApplicationContext(),Namecard.class);
+                startActivity(moveIntent);
             }
         });
 
@@ -111,7 +116,6 @@ public class SharedBigImage extends AppCompatActivity {
             public void onClick(View v) {
                 imageLayout.setDrawingCacheEnabled(true);
                 Bitmap bm = imageLayout.getDrawingCache();
-
                 Uri bgUri = getImageUri(getApplicationContext(), bm);
                 String sourceApplication = "com.khs.instagramshareexampleproject";
 
@@ -119,7 +123,6 @@ public class SharedBigImage extends AppCompatActivity {
                 // sticker asset, and background colors
                 Intent intent = new Intent("com.instagram.share.ADD_TO_STORY");
                 intent.putExtra("source_application", sourceApplication);
-
                 intent.setType("image/png");
                 intent.setDataAndType(bgUri, "image/png");
 
@@ -127,11 +130,9 @@ public class SharedBigImage extends AppCompatActivity {
                 grantUriPermission(
                         "com.instagram.android", null, Intent.FLAG_GRANT_READ_URI_PERMISSION
                 );
-
                 grantUriPermission(
                         "com.instagram.android", bgUri, Intent.FLAG_GRANT_READ_URI_PERMISSION
                 );
-
                 startActivity(intent);
 
             }

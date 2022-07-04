@@ -24,6 +24,8 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
     private ArrayList<Integer> fontSizeArrayList;
     private ArrayList<Float> transXArrayList;
     private ArrayList<Float> transYArrayList;
+    private ArrayList<Boolean> capsArrayList;
+
 
     Context context;
     public NamecardAdapter(Context context) {
@@ -34,6 +36,7 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
         fontSizeArrayList = new ArrayList<>();
         transXArrayList = new ArrayList<>();
         transYArrayList = new ArrayList<>();
+        capsArrayList = new ArrayList<>();
     }
 
     @NonNull
@@ -55,6 +58,12 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
 
         String drawablenumber = imageNumberArrayList.get(position);
 
+        if(textArrayList.size()==0){
+
+        }
+        else{
+
+        }
         String string = textArrayList.get(position);
         holder.textView.setText(string);
 
@@ -67,6 +76,9 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
         float Y = transYArrayList.get(position);
         holder.textView.setTranslationY(Y);
 
+        boolean caps = capsArrayList.get(position);
+        holder.textView.setAllCaps(caps);
+
         holder.imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +88,7 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
                 intent.putExtra("size", Integer.toString(size));
                 intent.putExtra("x", Float.toString(X));
                 intent.putExtra("y", Float.toString(Y));
+                intent.putExtra("caps", Boolean.toString(caps));
                 context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
             }
         });
@@ -104,4 +117,5 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
     public void setFontSizeArrayList(int size) {fontSizeArrayList.add(size);}
     public void setTransXArrayList(float X) {transXArrayList.add(X);}
     public void setTransYArrayList(float Y) {transYArrayList.add(Y);}
+    public void setCapsArrayList(boolean caps){capsArrayList.add(caps);}
 }
