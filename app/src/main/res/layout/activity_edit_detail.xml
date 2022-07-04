@@ -10,7 +10,7 @@
         android:id="@+id/edit_detailed_image"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="112dp"
         android:text="취소하기"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintStart_toStartOf="parent" />
@@ -68,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="80dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="112dp"
         android:text="적용하기"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent" />
