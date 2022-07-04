@@ -28,6 +28,9 @@
             android:name=".namecard.Namecard"
             android:exported="false" />
         <activity
+            android:name=".namecard.SharedBigImage"
+            android:exported="false" />
+        <activity
             android:name=".namecard.NameSelection"
             android:exported="false" />
         <activity
@@ -44,6 +47,12 @@
             android:exported="false" />
         <activity
             android:name=".gallery.gallery"
+            android:exported="false" />
+        <activity
+            android:name=".gallery.PhoneGallery"
+            android:exported="false" />
+        <activity
+            android:name=".gallery.UriBigImage"
             android:exported="false" />
         <activity
             android:name=".gallery.BigImage"
