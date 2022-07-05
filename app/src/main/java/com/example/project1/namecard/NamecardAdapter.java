@@ -25,6 +25,8 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
     private ArrayList<Float> transXArrayList;
     private ArrayList<Float> transYArrayList;
     private ArrayList<Boolean> capsArrayList;
+    private ArrayList<Boolean> isWhite;
+    private ArrayList<Boolean> isBGWhite;
 
 
     Context context;
@@ -37,6 +39,8 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
         transXArrayList = new ArrayList<>();
         transYArrayList = new ArrayList<>();
         capsArrayList = new ArrayList<>();
+        isWhite = new ArrayList<>();
+        isBGWhite = new ArrayList<>();
     }
 
     @NonNull

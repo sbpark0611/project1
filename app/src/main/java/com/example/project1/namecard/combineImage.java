@@ -34,12 +34,17 @@ public class combineImage extends AppCompatActivity {
     Button cancelAddButton;
     ImageView combinedImage;
     TextView combinedText;
+    boolean isWhite;
+    boolean isBGWhite;
     boolean setAllCaps = false;
     int fontSize = 10;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combine_image);
+
+        isWhite = false;
+        isBGWhite = false;
 
         Intent getAboutIntent = getIntent();
         //받아온 세개의 데이터
@@ -190,6 +195,8 @@ public class combineImage extends AppCompatActivity {
                 intent.putExtra("TransX", combinedText.getTranslationX());
                 intent.putExtra("TransY", combinedText.getTranslationY());
                 intent.putExtra("Caps",setAllCaps);
+                intent.putExtra("IsWhite",isWhite);
+                intent.putExtra("IsBGWhite",isBGWhite);
                 startActivity(intent);
 
             }
@@ -201,6 +208,46 @@ public class combineImage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Namecard.class);
                 startActivity(intent);
+            }
+        });
+
+        //글씨색 조정
+        ImageButton whiteButton = (ImageButton) findViewById(R.id.whiteButton);
+        whiteButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                combinedText.setTextColor(0xFFFFFF);
+                isWhite = true;
+            }
+        });
+
+        //글씨색 조정
+        ImageButton blackButton = (ImageButton) findViewById(R.id.blackButton);
+        blackButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                combinedText.setTextColor(0x000000);
+                isWhite = false;
+            }
+        });
+
+        //배경색 조정
+        ImageButton bgWhiteButton = (ImageButton) findViewById(R.id.bgWhiteButton);
+        bgWhiteButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                combinedText.setBackgroundColor(0xFFFFFF);
+                isBGWhite = true;
+            }
+        });
+
+        //배경색 조정
+        ImageButton bgBlackButton = (ImageButton) findViewById(R.id.bgBlackButton);
+        bgBlackButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                combinedText.setBackgroundColor(0x000000);
+                isBGWhite = false;
             }
         });
     }

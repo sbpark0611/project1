@@ -169,4 +169,70 @@
         app:layout_constraintVertical_bias="0.619"
         app:srcCompat="@drawable/ic_baseline_arrow_downward_24" />
 
+    <ImageButton
+        android:id="@+id/whiteButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:background="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/blackButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/edge"
+        app:layout_constraintStart_toEndOf="@+id/whiteButton"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="328dp"
+        android:text="글씨색"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/bgWhiteButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:background="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/bgBlackButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/edge"
+        app:layout_constraintStart_toEndOf="@+id/whiteButton"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="248dp"
+        android:text="배경색"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
