@@ -7,7 +7,7 @@
   * 생성 된 포토카드는 갤러리에 저장, 인스타 스토리 공유가 가능합니다.  
   * 포토카드의 텍스트 크기, 위치, 색상 등을 조정 할 수 있습니다.  
 
-    ![whole](C:\Users\USER\Desktop\whole.png)
+    ![whole](https://user-images.githubusercontent.com/48674812/177324788-0707ea7b-f4a3-4cfc-8d66-a1f5a6acadea.png)
 
   ***
 
