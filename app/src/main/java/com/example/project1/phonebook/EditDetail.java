@@ -38,13 +38,19 @@ public class EditDetail extends AppCompatActivity {
 
         Intent getIntent = getIntent();
         String received_drawable_number = getIntent.getStringExtra("drawable_number");
+        String received_profilenumber = getIntent.getStringExtra("profilenumber");
         String received_name = getIntent.getStringExtra("name");
         String received_phonenumber = getIntent.getStringExtra("phonenumber");
         String received_explanation = getIntent.getStringExtra("explanation");
-        String received_profilenumber = getIntent.getStringExtra("profilenumber");
+
+        SharedPreferences sharedPreferences = getSharedPreferences("phonenumbers",MODE_PRIVATE);
+        String savedProfileImage = sharedPreferences.getString(received_profilenumber,null);
 
         if(received_drawable_number!= null){
             edit_detailed_image.setImageDrawable(getResources().getDrawable(findByString(getApplicationContext(), "pic_"+received_drawable_number, "drawable")));
+        }
+        else if(savedProfileImage != null){
+            edit_detailed_image.setImageDrawable(getResources().getDrawable(findByString(getApplicationContext(), "pic_"+savedProfileImage, "drawable")));
         }
 
         if(received_name!= null){
