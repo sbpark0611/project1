@@ -3,6 +3,7 @@ package com.example.project1.namecard;
 import androidx.annotation.Dimension;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -38,13 +39,14 @@ public class combineImage extends AppCompatActivity {
     boolean isBGWhite;
     boolean setAllCaps = false;
     int fontSize = 10;
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combine_image);
 
         isWhite = false;
-        isBGWhite = false;
+        isBGWhite = true;
 
         Intent getAboutIntent = getIntent();
         //받아온 세개의 데이터
@@ -216,7 +218,7 @@ public class combineImage extends AppCompatActivity {
         whiteButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                combinedText.setTextColor(0xFFFFFF);
+                combinedText.setTextColor(R.color.light);
                 isWhite = true;
             }
         });
@@ -226,7 +228,7 @@ public class combineImage extends AppCompatActivity {
         blackButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                combinedText.setTextColor(0x000000);
+                combinedText.setTextColor(R.color.dark);
                 isWhite = false;
             }
         });
@@ -236,7 +238,7 @@ public class combineImage extends AppCompatActivity {
         bgWhiteButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                combinedText.setBackgroundColor(0xFFFFFF);
+                combinedImage.setBackgroundColor(R.color.light);
                 isBGWhite = true;
             }
         });
@@ -246,7 +248,7 @@ public class combineImage extends AppCompatActivity {
         bgBlackButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                combinedText.setBackgroundColor(0x000000);
+                combinedImage.setBackgroundColor(R.color.dark);
                 isBGWhite = false;
             }
         });

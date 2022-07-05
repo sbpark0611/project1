@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -49,6 +50,7 @@ public class SharedBigImage extends AppCompatActivity {
     Button shareButton;
     ConstraintLayout imageLayout;
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +67,8 @@ public class SharedBigImage extends AppCompatActivity {
         String x = getIntent.getStringExtra("x");
         String y = getIntent.getStringExtra("y");
         String caps = getIntent.getStringExtra("caps");
+        String isWhite = getIntent.getStringExtra("isWhite");
+        String isBGWhite = getIntent.getStringExtra("isBGWhite");
 
         bigImage.setImageDrawable(getResources().getDrawable(findByString(getApplicationContext(), "pic_" + drawablenumber, "drawable")));
         sharedText.setText(string);
@@ -72,6 +76,18 @@ public class SharedBigImage extends AppCompatActivity {
         sharedText.setTranslationX(Float.parseFloat(x));
         sharedText.setTranslationY(Float.parseFloat(y));
         sharedText.setAllCaps(Boolean.parseBoolean(caps));
+        if(Boolean.parseBoolean(isWhite)) {
+            sharedText.setTextColor(R.color.dark);
+        }
+        else{
+            sharedText.setTextColor(R.color.light);
+        }
+        if(Boolean.parseBoolean(isBGWhite)) {
+            bigImage.setBackgroundColor(R.color.dark);
+        }
+        else{
+            bigImage.setBackgroundColor(R.color.light);
+        }
 
         bigImage.setOnClickListener(new View.OnClickListener() {
             @Override
