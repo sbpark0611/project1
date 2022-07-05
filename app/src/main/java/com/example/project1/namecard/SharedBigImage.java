@@ -67,8 +67,8 @@ public class SharedBigImage extends AppCompatActivity {
         String x = getIntent.getStringExtra("x");
         String y = getIntent.getStringExtra("y");
         String caps = getIntent.getStringExtra("caps");
-        String isWhite = getIntent.getStringExtra("isWhite");
-        String isBGWhite = getIntent.getStringExtra("isBGWhite");
+        String textColor = getIntent.getStringExtra("textColor");
+        String bgColor = getIntent.getStringExtra("bgColor");
 
         bigImage.setImageDrawable(getResources().getDrawable(findByString(getApplicationContext(), "pic_" + drawablenumber, "drawable")));
         sharedText.setText(string);
@@ -76,17 +76,25 @@ public class SharedBigImage extends AppCompatActivity {
         sharedText.setTranslationX(Float.parseFloat(x));
         sharedText.setTranslationY(Float.parseFloat(y));
         sharedText.setAllCaps(Boolean.parseBoolean(caps));
-        if(Boolean.parseBoolean(isWhite)) {
-            sharedText.setTextColor(R.color.dark);
+
+        if(Integer.parseInt(textColor) == 1) {
+            sharedText.setTextColor(getResources().getColor(R.color.light));
+        }
+        else if(Integer.parseInt(textColor) == 2) {
+            sharedText.setTextColor(getResources().getColor(R.color.gray));
         }
         else{
-            sharedText.setTextColor(R.color.light);
+            sharedText.setTextColor(getResources().getColor(R.color.dark));
         }
-        if(Boolean.parseBoolean(isBGWhite)) {
-            bigImage.setBackgroundColor(R.color.dark);
+
+        if(Integer.parseInt(bgColor) == 1) {
+            bigImage.setBackgroundColor(getResources().getColor(R.color.light));
+        }
+        else if(Integer.parseInt(bgColor) == 2) {
+            bigImage.setBackgroundColor(getResources().getColor(R.color.gray));
         }
         else{
-            bigImage.setBackgroundColor(R.color.light);
+            bigImage.setBackgroundColor(getResources().getColor(R.color.dark));
         }
 
         bigImage.setOnClickListener(new View.OnClickListener() {
@@ -158,34 +166,6 @@ public class SharedBigImage extends AppCompatActivity {
     public static int findByString(Context context, String resourceName, String type) {
         out.println(resourceName);
         return context.getResources().getIdentifier(resourceName, type, context.getPackageName());
-    }
-
-    private void onCap(Bitmap bm, int number) throws Exception {
-        File saveFile;
-        FileOutputStream out = null;
-
-        try {
-            String imgFile = "save"+Integer.toString(number)+".jpg"; // 저장파일명
-
-            String root = Environment.getExternalStorageDirectory().toString();
-            StringBuffer imgPath = new StringBuffer(root + "/Download/"); // 저장경로
-            saveFile = new File(imgPath.toString());
-
-            if (!saveFile.isDirectory()) {
-                saveFile.mkdirs();
-            }
-            imgPath.append(imgFile);
-            out = new FileOutputStream(imgPath.toString()); // 저장경로 + 파일명
-            bm.compress(Bitmap.CompressFormat.JPEG, 100, out);
-            sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + Environment.getExternalStorageDirectory())));
-        } catch (Exception e) {
-
-        } finally {
-            if (out != null) {
-                out.close();
-            }
-            saveFile = null;
-        }
     }
 
     private Uri getImageUri(Context context, Bitmap inImage) {

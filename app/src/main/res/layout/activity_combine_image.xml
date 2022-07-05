@@ -91,7 +91,7 @@
         android:layout_marginTop="12dp"
         app:layout_constraintBottom_toTopOf="@+id/downButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintHorizontal_bias="0.617"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/combinedImage"
         app:layout_constraintVertical_bias="0.0"
@@ -103,10 +103,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/downButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.677"
+        app:layout_constraintHorizontal_bias="0.749"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/upButton"
-        app:layout_constraintVertical_bias="0.48"
+        app:layout_constraintVertical_bias="0.571"
         app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24" />
 
     <ImageButton
@@ -116,10 +116,10 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/question"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintHorizontal_bias="0.617"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/combinedImage"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.925"
         app:srcCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
 
     <ImageButton
@@ -128,10 +128,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/downButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.355"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/upButton"
-        app:layout_constraintVertical_bias="0.52"
+        app:layout_constraintVertical_bias="0.583"
         app:srcCompat="@drawable/ic_baseline_keyboard_arrow_left_24" />
 
     <ImageButton
@@ -172,7 +172,7 @@
         android:id="@+id/whiteButton"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/edge"
         app:layout_constraintStart_toStartOf="parent"
@@ -180,13 +180,24 @@
         tools:ignore="MissingConstraints" />
 
     <ImageButton
+        android:id="@+id/grayButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/gray"
+        app:layout_constraintStart_toEndOf="@+id/whiteButton"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
         android:id="@+id/blackButton"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
-        android:background="#000000"
-        app:layout_constraintStart_toEndOf="@+id/whiteButton"
+        android:background="@color/dark"
+        app:layout_constraintStart_toEndOf="@+id/grayButton"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:ignore="MissingConstraints" />
 
@@ -205,7 +216,7 @@
         android:id="@+id/bgWhiteButton"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/edge"
         app:layout_constraintStart_toStartOf="parent"
@@ -213,13 +224,24 @@
         tools:ignore="MissingConstraints" />
 
     <ImageButton
+        android:id="@+id/bgGrayButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/gray"
+        app:layout_constraintStart_toEndOf="@+id/bgWhiteButton"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
         android:id="@+id/bgBlackButton"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
-        android:background="#000000"
-        app:layout_constraintStart_toEndOf="@+id/whiteButton"
+        android:background="@color/dark"
+        app:layout_constraintStart_toEndOf="@+id/bgGrayButton"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:ignore="MissingConstraints" />
 
