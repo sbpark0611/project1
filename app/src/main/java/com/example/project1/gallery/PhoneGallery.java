@@ -11,9 +11,11 @@ import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,13 +27,14 @@ import com.example.project1.namecard.Namecard;
 import com.example.project1.phonebook.phonebook;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class PhoneGallery extends AppCompatActivity {
 
     RecyclerView recyclerView;
     UriImageAdapter adapter;
-    ImageButton imageButton,backButton ;
+    ImageButton imageButton,backButton,cameraButton ;
 
     public static ArrayList<Uri> uriList = new ArrayList<>();
 
@@ -67,6 +70,16 @@ public class PhoneGallery extends AppCompatActivity {
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(intent,0);
+            }
+        });
+
+        //카메라 버튼
+        cameraButton = (ImageButton) findViewById(R.id.camera_Button);
+        cameraButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(i, 2);
             }
         });
 
@@ -123,42 +136,52 @@ public class PhoneGallery extends AppCompatActivity {
                         Log.e("single choice: ", String.valueOf(data.getData()));
                         Uri imageUri = data.getData();
                         uriList.add(imageUri);
-
-                        SharedPreferences uriSharedPreferences = getSharedPreferences("uri",MODE_PRIVATE);
-                        SharedPreferences.Editor editor = uriSharedPreferences.edit();
-                        editor.putString("uri", imageUri.toString());
-                        editor.commit();
-
-//                        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
+//
+//                        SharedPreferences uriSharedPreferences = getSharedPreferences("uri",MODE_PRIVATE);
+//                        SharedPreferences.Editor editor = uriSharedPreferences.edit();
+//                        editor.putString("uri", imageUri.toString());
+//                        editor.commit();
                     } else {      // 이미지를 여러장 선택한 경우
                         ClipData clipData = data.getClipData();
                         Log.e("clipData", String.valueOf(clipData.getItemCount()));
 
-                        if (clipData.getItemCount() > 10) {   // 선택한 이미지가 11장 이상인 경우
-                            Toast.makeText(getApplicationContext(), "사진은 10장까지 선택 가능합니다.", Toast.LENGTH_LONG).show();
-                        } else {   // 선택한 이미지가 1장 이상 10장 이하인 경우
-                            Log.e("MultiImageActivity", "multiple choice");
-
-                            for (int i = 0; i < clipData.getItemCount(); i++) {
-                                Uri imageUri = clipData.getItemAt(i).getUri();  // 선택한 이미지들의 uri를 가져온다.
-                                try {
-                                    uriList.add(imageUri);  //uri를 list에 담는다.
-                                } catch (Exception e) {
-                                    Log.e("MultiImageActivity", "File select error", e);
-                                }
+                        for (int i = 0; i < clipData.getItemCount(); i++) {
+                            Uri imageUri = clipData.getItemAt(i).getUri();  // 선택한 이미지들의 uri를 가져온다.
+                            try {
+                                uriList.add(imageUri);  //uri를 list에 담는다.
+                            } catch (Exception e) {
+                                Log.e("MultiImageActivity", "File select error", e);
                             }
-                            adapter = new UriImageAdapter(uriList,getApplicationContext());
-
-                            recyclerView.setAdapter(adapter);   // 리사이클러뷰에 어댑터 세팅
-                            recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));     // 리사이클러뷰 수평 스크롤 적용
                         }
                     }
-
                     adapter = new UriImageAdapter(uriList,getApplicationContext());
                     recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
                     recyclerView.setAdapter(adapter);
                 }
             }
         }
+        else if(requestCode == 2 && resultCode == RESULT_OK) {
+            // Bundle로 데이터를 입력
+            Bundle extras = data.getExtras();
+
+            // Bitmap으로 컨버전
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+
+            Uri uri = getImageUri(getApplicationContext(), imageBitmap);
+            // 이미지뷰에 Bitmap으로 이미지를 입력
+            uriList.add(uri);
+            recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+            adapter = new UriImageAdapter(uriList,getApplicationContext());
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+            recyclerView.setAdapter(adapter);
+
+        }
+    }
+
+    private Uri getImageUri(Context context, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
 }

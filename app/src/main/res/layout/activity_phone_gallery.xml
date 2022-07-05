@@ -27,6 +27,19 @@ tools:context=".gallery.PhoneGallery" >
         app:srcCompat="@drawable/ic_baseline_add_box_24" />
 
     <ImageButton
+        android:id="@+id/camera_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/add_Image"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="300dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="#00000000"
+        app:srcCompat="@drawable/ic_baseline_photo_camera_24" />
+
+    <ImageButton
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
