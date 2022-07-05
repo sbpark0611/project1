@@ -70,9 +70,13 @@ public class ProfileSelectAdapter extends RecyclerView.Adapter<ImageViewHolder> 
                     context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
                 }
                 else if(caller.equals("phonebook")){
-                    Intent intent = new Intent(v.getContext(), phonebook.class);
+                    Intent intent = new Intent(v.getContext(), DetailedPhonebook.class);
+                    intent.putExtra("name", name);
+                    intent.putExtra("phonenumber", phonenumber);
+                    intent.putExtra("explanation", explanation);
                     intent.putExtra("drawable_number", Integer.toString(holder.getAdapterPosition() + 1));
-                    intent.putExtra("profile_number", profilenumber);
+                    intent.putExtra("profilenumber", profilenumber);
+                    intent.putExtra("directout", "1");
                     context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
                 }
                 else {

@@ -50,6 +50,7 @@ public class DetailedPhonebook extends AppCompatActivity {
         String received_explanation = getIntent.getStringExtra("explanation");
         String received_drawable_number = getIntent.getStringExtra("drawable_number");
         String received_profilenumber = getIntent.getStringExtra("profilenumber");
+        String directout = getIntent.getStringExtra("directout");
 
         SharedPreferences sharedPreferences = getSharedPreferences("phonenumbers",MODE_PRIVATE);
 
@@ -207,6 +208,11 @@ public class DetailedPhonebook extends AppCompatActivity {
             }
         });
         //navigation 끝
+
+        if(directout != null && directout.equals("1")){
+            Intent intent = new Intent(getApplicationContext(), phonebook.class);
+            startActivity(intent);
+        }
     }
 
     public static int findByString(Context context, String resourceName, String type) {
