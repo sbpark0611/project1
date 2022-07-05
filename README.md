@@ -39,7 +39,7 @@
 
   ### TAB 1 - Phonebook   
 
-  ![phonebook](C:\Users\USER\Desktop\phonebook.png)
+  ![whole](https://user-images.githubusercontent.com/48674812/177324044-405e0886-6a53-4444-aa49-dbebaa6c6b16.png)
 
   #### Major features   
 
@@ -83,7 +83,7 @@
   
   
         * 특정 shared preference의 editor 객체를 생성하고, 해당 editor에 넣고 싶은 값을 넣으면 된다. 첫번째 인자는 key 값이고, 두번째 인자는 key값과 상응하는 value 값이다. 마지막으로 git에 올리듯 commit()을 해주면 된다.
-  
+      
       ```java
       SharedPreferences.Editor editor = sharedPreferences.edit();
       editor.putString(received_profile_number, received_drawable_number);
@@ -96,7 +96,7 @@
 
   ### TAB 2 - Gallery  
 
-  ![gallery](C:\Users\USER\Desktop\gallery.png)
+![gallery](https://user-images.githubusercontent.com/48674812/177324217-486e67f2-eb09-40f9-bfca-54e3f2357c98.png)
 
   #### Major features   
 
@@ -124,12 +124,13 @@
 
 
     * 전역 uri arrayList로 구현하였습니다. 특정 사진을 UriBigImage라는 새로운 activity로 확대하여 보여줄 때, 삭제할 때 등 편하게 indexing하여서 작업하기 위해서입니다. 
-
+    
       ```java
       public static ArrayList<Uri> uriList = new ArrayList<>();
       ```
 
-      
+
+​      
 
 
 
@@ -173,7 +174,7 @@
     * 카메라에서 받아온 데이터를 bundle로 가져옵니다. Bundle은 Map형태로 여러가지의 타입의 값을 저장하는 클래스입니다. key값과 value로 이뤄져 있습니다.
     * 이때 bundle에서 string 값 key "data"를 이용해서 bitmap의 value를 가져옵니다.
     * 그 후 같은 uriList에서 저장 될 수 있게 getImageUri 함수를 이용해서 bitmap -> uri로 변환해줍니다.
-
+    
     ```java
     else if(requestCode == 2 && resultCode == RESULT_OK) {
         Bundle extras = data.getExtras();
@@ -191,14 +192,15 @@
     }
     ```
 
-    
+
+​    
 
 
 ***
 
   ### TAB 3 - Namecard   
 
-![namecard](C:\Users\USER\Desktop\namecard.png)
+![namecard](https://user-images.githubusercontent.com/48674812/177324315-44e75a58-5d11-4643-926b-2cc7bbc64be3.png)
 
   #### Major features   
 
