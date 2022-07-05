@@ -92,8 +92,7 @@ public class Namecard extends AppCompatActivity {
             }
             recyclerView.setAdapter(adapter);
         }
-        else{
-        }
+
 
         // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
