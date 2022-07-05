@@ -53,7 +53,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
             holder.text_phonenumber.setText(jsonData.getString("phonenumber"));
             holder.text_explanation.setText(jsonData.getString("explanation"));
             holder.imageview.setImageDrawable(drawableArrayList.get(position));
-        } catch (JSONException e) {e.printStackTrace();}
+        } catch (JSONException e) {System.out.println();}
 
         //전화번호부 클릭했을 때 반응
         holder.text_name.setOnClickListener(new View.OnClickListener() {

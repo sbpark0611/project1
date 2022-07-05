@@ -60,9 +60,6 @@ public class DetailedPhonebook extends AppCompatActivity {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString(received_profilenumber, received_drawable_number);
             editor.commit();
-
-
-
         }
         else if(savedProfileImage != null){
             detailed_profile_image.setImageDrawable(getResources().getDrawable(findByString(getApplicationContext(), "pic_"+savedProfileImage, "drawable")));
