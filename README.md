@@ -82,15 +82,14 @@
   * SAVE:
   
   
-        * 특정 shared preference의 editor 객체를 생성하고, 해당 editor에 넣고 싶은 값을 넣으면 된다. 첫번째 인자는 key 값이고, 두번째 인자는 key값과 상응하는 value 값이다. 마지막으로 git에 올리듯 commit()을 해주면 된다.
-      
-      ```java
-      SharedPreferences.Editor editor = sharedPreferences.edit();
-      editor.putString(received_profile_number, received_drawable_number);
-      editor.commit();
-      ```
-
-
+    * 특정 shared preference의 editor 객체를 생성하고, 해당 editor에 넣고 싶은 값을 넣으면 된다. 첫번째 인자는 key 값이고, 두번째 인자는 key값과 상응하는 value 값이다. 마지막으로 git에 올리듯 commit()을 해주면 된다.
+  
+    ```java
+    SharedPreferences.Editor editor = sharedPreferences.edit();
+    editor.putString(received_profile_number, received_drawable_number);
+    editor.commit();
+    ```
+  
 
 ***
 
@@ -123,18 +122,15 @@
   * 두번째 갤러리 사진 리스트 구현: 
 
 
-    * 전역 uri arrayList로 구현하였습니다. 특정 사진을 UriBigImage라는 새로운 activity로 확대하여 보여줄 때, 삭제할 때 등 편하게 indexing하여서 작업하기 위해서입니다. 
-    
-      ```java
-      public static ArrayList<Uri> uriList = new ArrayList<>();
-      ```
+    * 전역 uri arrayList로 구현하였습니다. 특정 사진을 UriBigImage라는 새로운 activity로 확대하여 보여줄 때, 삭제할 때 등 편하게 indexing하여서 작업하기 위해서입니다.
 
-
-​      
+    ```java
+    public static ArrayList<Uri> uriList = new ArrayList<>();
+    ```
 
 
 
-  * 갤러리 연동:
+* 갤러리 연동:
 
     * 사진을 한 장 선택했을 때, 여러 장을 선정했을 때 나눠서 구현했습니다. 
     * data는 intent type으로, uri 이미지 등 가져올 수 있습니다. 사진이 여러 장일 경우 clipdata로 가져오는 데, 한 개 이상의 실제 데이터를 가져올 경우 clip data를 활용해서 가져와야 합니다.
@@ -168,32 +164,29 @@
     }
     ```
 
-  * 카메라 연동:
+* 카메라 연동:
+
+  * 카메라에서 받아온 데이터를 bundle로 가져옵니다. Bundle은 Map형태로 여러가지의 타입의 값을 저장하는 클래스입니다. key값과 value로 이뤄져 있습니다.
+  * 이때 bundle에서 string 값 key "data"를 이용해서 bitmap의 value를 가져옵니다.
+  * 그 후 같은 uriList에서 저장 될 수 있게 getImageUri 함수를 이용해서 bitmap -> uri로 변환해줍니다.
+
+  ```java
+  else if(requestCode == 2 && resultCode == RESULT_OK) {
+      Bundle extras = data.getExtras();
+      Bitmap imageBitmap = (Bitmap) extras.get("data");
+  
+      Uri uri = getImageUri(getApplicationContext(), imageBitmap);
+      uriList.add(uri);
+      recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+      adapter = new UriImageAdapter(uriList,getApplicationContext());
+      recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+      recyclerView.setAdapter(adapter);
+  
+  }
+  ```
 
 
-    * 카메라에서 받아온 데이터를 bundle로 가져옵니다. Bundle은 Map형태로 여러가지의 타입의 값을 저장하는 클래스입니다. key값과 value로 이뤄져 있습니다.
-    * 이때 bundle에서 string 값 key "data"를 이용해서 bitmap의 value를 가져옵니다.
-    * 그 후 같은 uriList에서 저장 될 수 있게 getImageUri 함수를 이용해서 bitmap -> uri로 변환해줍니다.
-    
-    ```java
-    else if(requestCode == 2 && resultCode == RESULT_OK) {
-        Bundle extras = data.getExtras();
-    
-        Bitmap imageBitmap = (Bitmap) extras.get("data");
-    
-        Uri uri = getImageUri(getApplicationContext(), imageBitmap);
-    
-        uriList.add(uri);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        adapter = new UriImageAdapter(uriList,getApplicationContext());
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
-        recyclerView.setAdapter(adapter);
-    
-    }
-    ```
-
-
-​    
+ 
 
 
 ***
