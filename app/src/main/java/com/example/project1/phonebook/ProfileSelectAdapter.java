@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1.R;
 import com.example.project1.gallery.ImageViewHolder;
+import com.example.project1.gallery.PhoneGallery;
 import com.example.project1.namecard.about;
 
 import java.util.ArrayList;
@@ -66,6 +67,12 @@ public class ProfileSelectAdapter extends RecyclerView.Adapter<ImageViewHolder> 
                     intent.putExtra("phonenumber", phonenumber);
                     intent.putExtra("explanation", explanation);
                     intent.putExtra("profilenumber", profilenumber);
+                    context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
+                }
+                else if(caller.equals("phonebook")){
+                    Intent intent = new Intent(v.getContext(), phonebook.class);
+                    intent.putExtra("drawable_number", Integer.toString(holder.getAdapterPosition() + 1));
+                    intent.putExtra("profile_number", profilenumber);
                     context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
                 }
                 else {

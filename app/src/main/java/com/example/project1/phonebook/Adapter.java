@@ -67,6 +67,19 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
                 context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
             }
         });
+        holder.text_name.setOnLongClickListener(new View.OnLongClickListener(){
+            @Override
+            public boolean onLongClick(View v) {
+                Intent intent = new Intent(v.getContext(), EditDetail.class);
+                intent.putExtra("name", holder.text_name.getText());
+                intent.putExtra("phonenumber", holder.text_phonenumber.getText());
+                intent.putExtra("explanation", holder.text_explanation.getText());
+                intent.putExtra("profilenumber", Integer.toString(holder.getAdapterPosition()));
+                context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
+                return true;
+            }
+        });
+
         holder.text_phonenumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +91,19 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
                 context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
             }
         });
+        holder.text_phonenumber.setOnLongClickListener(new View.OnLongClickListener(){
+            @Override
+            public boolean onLongClick(View v) {
+                Intent intent = new Intent(v.getContext(), EditDetail.class);
+                intent.putExtra("name", holder.text_name.getText());
+                intent.putExtra("phonenumber", holder.text_phonenumber.getText());
+                intent.putExtra("explanation", holder.text_explanation.getText());
+                intent.putExtra("profilenumber", Integer.toString(holder.getAdapterPosition()));
+                context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
+                return true;
+            }
+        });
+
         holder.imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +113,19 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
                 intent.putExtra("explanation", holder.text_explanation.getText());
                 intent.putExtra("profilenumber", Integer.toString(holder.getAdapterPosition()));
                 context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
+            }
+        });
+        holder.imageview.setOnLongClickListener(new View.OnLongClickListener(){
+            @Override
+            public boolean onLongClick(View v) {
+                Intent intent = new Intent(v.getContext(), ProfileSelection.class);
+                intent.putExtra("name", holder.text_name.getText());
+                intent.putExtra("phonenumber", holder.text_phonenumber.getText());
+                intent.putExtra("explanation", holder.text_explanation.getText());
+                intent.putExtra("profilenumber", Integer.toString(holder.getAdapterPosition()));
+                intent.putExtra("caller", "phonebook");
+                context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
+                return true;
             }
         });
     }
