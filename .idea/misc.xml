@@ -34,6 +34,10 @@
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.2985" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2985" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/drawable/selector.xml" value="0.2985" />
+        <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/font/custom_font_family.xml" value="0.3953125" />
+        <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/font/fontmanager.xml" value="0.13055555555555556" />
+        <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/font/fontstyle.xml" value="0.3892307692307692" />
+        <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/font/nanumbarungothic.xml" value="0.2833333333333333" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/activity_about.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/activity_add_phonenumber.xml" value="0.3515625" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/activity_addphonebook.xml" value="0.33" />
@@ -48,10 +52,12 @@
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/activity_phonebook.xml" value="0.22" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/activity_profile_selection.xml" value="0.2520833333333333" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/activity_shared_big_image.xml" value="0.25" />
+        <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/activity_uri_big_image.xml" value="0.18958333333333333" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/grid_layout.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/imagepanel.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/itempanel.xml" value="0.75" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/namecardpanel.xml" value="0.1" />
+        <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/layout/outline_textview.xml" value="0.22056159420289856" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.198" />
         <entry key="..\:/Users/sbpar/AndroidStudioProjects/project1/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.198" />
       </map>

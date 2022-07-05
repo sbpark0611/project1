@@ -38,7 +38,6 @@
             android:id="@+id/text_explanation"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:text="TextView"
             android:visibility="invisible" />
 
         <TextView
@@ -50,6 +49,7 @@
             android:textSize="25dp" />
 
         <TextView
+            android:fontFamily="@font/fontstyle"
             android:id="@+id/text_phonenumber"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
