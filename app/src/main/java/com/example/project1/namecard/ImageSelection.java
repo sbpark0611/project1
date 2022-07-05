@@ -21,7 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class ImageSelection extends AppCompatActivity {
     RecyclerView recyclerView;
     ImageSelectAdapter adapter;
-    int imagenum = 20;
+    int imagenum = 30;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
