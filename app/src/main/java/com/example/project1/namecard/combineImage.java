@@ -35,8 +35,8 @@ public class combineImage extends AppCompatActivity {
     Button cancelAddButton;
     ImageView combinedImage;
     TextView combinedText;
-    boolean isWhite;
-    boolean isBGWhite;
+    int textColor;
+    int bgColor;
     boolean setAllCaps = false;
     int fontSize = 10;
     @SuppressLint("ResourceAsColor")
@@ -45,8 +45,8 @@ public class combineImage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combine_image);
 
-        isWhite = false;
-        isBGWhite = true;
+        textColor = 3;
+        bgColor = 1;
 
         Intent getAboutIntent = getIntent();
         //받아온 세개의 데이터
@@ -150,7 +150,7 @@ public class combineImage extends AppCompatActivity {
         fontUp.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                fontSize += 10;
+                fontSize += 5;
                 combinedText.setTextSize(Dimension.SP,fontSize);
             }
         });
@@ -159,9 +159,9 @@ public class combineImage extends AppCompatActivity {
         fontDown.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                fontSize-=10;
-                if(fontSize<=0){
-                    fontSize=5;
+                fontSize -= 5;
+                if(fontSize < 5){
+                    fontSize = 5;
                     Toast.makeText(v.getContext(), "텍스트 사이즈를 더 줄일 수 없습니다.",Toast.LENGTH_SHORT).show();
                 }
                 combinedText.setTextSize(Dimension.SP,fontSize);
@@ -197,8 +197,8 @@ public class combineImage extends AppCompatActivity {
                 intent.putExtra("TransX", combinedText.getTranslationX());
                 intent.putExtra("TransY", combinedText.getTranslationY());
                 intent.putExtra("Caps",setAllCaps);
-                intent.putExtra("IsWhite",isWhite);
-                intent.putExtra("IsBGWhite",isBGWhite);
+                intent.putExtra("textColor",Integer.toString(textColor));
+                intent.putExtra("bgColor",Integer.toString(bgColor));
                 startActivity(intent);
 
             }
@@ -218,8 +218,17 @@ public class combineImage extends AppCompatActivity {
         whiteButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                combinedText.setTextColor(R.color.light);
-                isWhite = true;
+                combinedText.setTextColor(getResources().getColor(R.color.light));
+                textColor = 1;
+            }
+        });
+
+        ImageButton grayButton = (ImageButton) findViewById(R.id.grayButton);
+        grayButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                combinedText.setTextColor(getResources().getColor(R.color.gray));
+                textColor = 2;
             }
         });
 
@@ -228,8 +237,8 @@ public class combineImage extends AppCompatActivity {
         blackButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                combinedText.setTextColor(R.color.dark);
-                isWhite = false;
+                combinedText.setTextColor(getResources().getColor(R.color.dark));
+                textColor = 3;
             }
         });
 
@@ -238,8 +247,17 @@ public class combineImage extends AppCompatActivity {
         bgWhiteButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                combinedImage.setBackgroundColor(R.color.light);
-                isBGWhite = true;
+                combinedImage.setBackgroundColor(getResources().getColor(R.color.light));
+                bgColor = 1;
+            }
+        });
+
+        ImageButton bgGrayButton = (ImageButton) findViewById(R.id.bgGrayButton);
+        bgGrayButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                combinedImage.setBackgroundColor(getResources().getColor(R.color.gray));
+                bgColor = 2;
             }
         });
 
@@ -248,8 +266,8 @@ public class combineImage extends AppCompatActivity {
         bgBlackButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                combinedImage.setBackgroundColor(R.color.dark);
-                isBGWhite = false;
+                combinedImage.setBackgroundColor(getResources().getColor(R.color.dark));
+                bgColor = 3;
             }
         });
     }

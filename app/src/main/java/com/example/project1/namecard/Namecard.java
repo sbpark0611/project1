@@ -37,8 +37,8 @@ public class Namecard extends AppCompatActivity {
     static ArrayList<Float> received_X= new ArrayList<>();
     static ArrayList<Float> received_Y= new ArrayList<>();
     static ArrayList<Boolean> received_caps = new ArrayList<>();
-    static ArrayList<Boolean> isWhite = new ArrayList<>();
-    static ArrayList<Boolean> isBGWhite = new ArrayList<>();
+    static ArrayList<Integer> textColor = new ArrayList<>();
+    static ArrayList<Integer> bgColor = new ArrayList<>();
 
     public static int numofarray = 0;
 
@@ -64,8 +64,8 @@ public class Namecard extends AppCompatActivity {
             received_Y.add(getNameCardIntent.getFloatExtra("TransY", 0));
             received_size.add(getNameCardIntent.getIntExtra("TextSize", 10));
             received_caps.add(getNameCardIntent.getBooleanExtra("Caps",false));
-            isWhite.add(getNameCardIntent.getBooleanExtra("IsWhite",false));
-            isBGWhite.add(getNameCardIntent.getBooleanExtra("IsBGWhite",false));
+            textColor.add(Integer.parseInt(getNameCardIntent.getStringExtra("textColor")));
+            bgColor.add(Integer.parseInt(getNameCardIntent.getStringExtra("bgColor")));
         }
         if(numofarray!=0){
             recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -87,8 +87,8 @@ public class Namecard extends AppCompatActivity {
                 adapter.setTransXArrayList(received_X.get(i-1));
                 adapter.setTransYArrayList(received_Y.get(i-1));
                 adapter.setCapsArrayList(received_caps.get(i-1));
-                adapter.setIsWhiteArrayList(isWhite.get(i-1));
-                adapter.setIsBGWhiteArrayList(isBGWhite.get(i-1));
+                adapter.setIsWhiteArrayList(textColor.get(i-1));
+                adapter.setIsBGWhiteArrayList(bgColor.get(i-1));
             }
             recyclerView.setAdapter(adapter);
         }
@@ -161,5 +161,4 @@ public class Namecard extends AppCompatActivity {
         }
         return urls;
     }
-
 }

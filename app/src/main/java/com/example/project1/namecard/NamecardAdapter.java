@@ -26,8 +26,8 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
     private ArrayList<Float> transXArrayList;
     private ArrayList<Float> transYArrayList;
     private ArrayList<Boolean> capsArrayList;
-    private ArrayList<Boolean> isWhite;
-    private ArrayList<Boolean> isBGWhite;
+    private ArrayList<Integer> textColorArrayList;
+    private ArrayList<Integer> bgColorArrayList;
 
 
     Context context;
@@ -40,8 +40,8 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
         transXArrayList = new ArrayList<>();
         transYArrayList = new ArrayList<>();
         capsArrayList = new ArrayList<>();
-        isWhite = new ArrayList<>();
-        isBGWhite = new ArrayList<>();
+        textColorArrayList = new ArrayList<>();
+        bgColorArrayList = new ArrayList<>();
     }
 
     @NonNull
@@ -85,20 +85,26 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
         boolean caps = capsArrayList.get(position);
         holder.textView.setAllCaps(caps);
 
-        boolean isWhite2 = isWhite.get(position);
-        if(isWhite2){
-            holder.textView.setTextColor(R.color.light);
+        int textColor = textColorArrayList.get(position);
+        if(textColor == 1){
+            holder.textView.setTextColor(context.getResources().getColor(R.color.light));
+        }
+        else if(textColor == 2){
+            holder.textView.setTextColor(context.getResources().getColor(R.color.gray));
         }
         else{
-            holder.textView.setTextColor(R.color.dark);
+            holder.textView.setTextColor(context.getResources().getColor(R.color.dark));
         }
 
-        boolean isBGWhite2 = isBGWhite.get(position);
-        if(isWhite2){
-            holder.imageview.setBackgroundColor(R.color.light);
+        int bgColor = bgColorArrayList.get(position);
+        if(bgColor == 1){
+            holder.imageview.setBackgroundColor(context.getResources().getColor(R.color.light));
+        }
+        else if(bgColor == 2){
+            holder.imageview.setBackgroundColor(context.getResources().getColor(R.color.gray));
         }
         else{
-            holder.imageview.setBackgroundColor(R.color.dark);
+            holder.imageview.setBackgroundColor(context.getResources().getColor(R.color.dark));
         }
 
         holder.imageview.setOnClickListener(new View.OnClickListener() {
@@ -111,8 +117,8 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
                 intent.putExtra("x", Float.toString(X));
                 intent.putExtra("y", Float.toString(Y));
                 intent.putExtra("caps", Boolean.toString(caps));
-                intent.putExtra("isWhite", Boolean.toString(isWhite2));
-                intent.putExtra("isBGWhite", Boolean.toString(isBGWhite2));
+                intent.putExtra("textColor", Integer.toString(textColor));
+                intent.putExtra("bgColor", Integer.toString(bgColor));
                 context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
             }
         });
@@ -142,6 +148,6 @@ public class NamecardAdapter extends RecyclerView.Adapter<NamecardViewHolder> {
     public void setTransXArrayList(float X) {transXArrayList.add(X);}
     public void setTransYArrayList(float Y) {transYArrayList.add(Y);}
     public void setCapsArrayList(boolean caps){capsArrayList.add(caps);}
-    public void setIsWhiteArrayList(boolean is){isWhite.add(is);}
-    public void setIsBGWhiteArrayList(boolean is){isBGWhite.add(is);}
+    public void setIsWhiteArrayList(int is){textColorArrayList.add(is);}
+    public void setIsBGWhiteArrayList(int is){bgColorArrayList.add(is);}
 }
