@@ -31,6 +31,9 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
+            android:fontFamily="@font/fontstyle"
+            android:textColor="#000000"
+
             android:id="@+id/shared_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,7 +42,6 @@
             android:layout_alignEnd="@+id/shared_big_image_view"
             android:layout_alignBottom="@+id/shared_big_image_view"
             android:gravity="center"
-            android:text="TextView"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="175dp"
             app:layout_constraintBottom_toBottomOf="@+id/shared_big_image_view"
