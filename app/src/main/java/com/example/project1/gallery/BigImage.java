@@ -44,6 +44,8 @@ public class BigImage extends AppCompatActivity {
                     intent.putExtra("name", getIntent.getStringExtra("name"));
                     intent.putExtra("phonenumber", getIntent.getStringExtra("phonenumber"));
                     intent.putExtra("profilenumber", getIntent.getStringExtra("profilenumber"));
+                    intent.putExtra("explanation", getIntent.getStringExtra("explanation"));
+                    intent.putExtra("drawable_number", getIntent.getStringExtra("drawable_number"));
                     startActivity(intent);
                 }
                 else{

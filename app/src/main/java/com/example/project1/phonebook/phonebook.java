@@ -116,7 +116,7 @@ public class phonebook extends AppCompatActivity {
                 received_jsonObject.put("phonenumber", received_phonenumber);
                 received_jsonObject.put("explanation", received_explanation);
 
-                if(received_name != null && received_phonenumber != null && received_explanation != null){
+                if(received_name != null && received_phonenumber != null ){
                     adapter.setArrayData(received_jsonObject, getResources().getDrawable(R.drawable.ic_baseline_account_box_24));
 
                     arr.put(received_jsonObject);
